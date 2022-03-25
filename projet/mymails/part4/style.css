@@ -72,7 +72,8 @@ body {
     border-radius: 20%;
     color: #4D96FF;
 }
-#barre{
+
+#barre {
     padding: 1%;
     width: 100%;
     border-radius: 2%;
@@ -81,7 +82,7 @@ body {
     background-color: white;
 }
 
-.add-message{
+.add-message {
     border: 1px solid #DADADA;
     background-color: #FFFFFF;
     display: flex;
@@ -91,14 +92,14 @@ body {
     padding: 2%;
 }
 
-.search{
+.search {
     display: flex;
     gap: 20px;
     padding: 2%;
     width: 70%;
 }
 
-#search-message{
+#search-message {
     padding: 1%;
     border-radius: 10px;
     border: 1px solid #000000;
@@ -106,7 +107,7 @@ body {
     width: 100%;
 }
 
-#search-bouton{
+#search-bouton {
     outline: 0;
     padding: 1%;
     border: 2px solid #4D96FF;

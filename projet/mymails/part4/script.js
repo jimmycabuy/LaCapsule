@@ -76,9 +76,9 @@ $("#search-bouton").click(
                     $(this);
                 }
             }
-            );
-            const messageCount = $(this).length;
-            $("#nombre").text(messageCount);
-            $("#search-message").val('');
+        );
+        var messageCount = $(this).length;
+        $("#nombre").text(messageCount);
+        $("#search-message").val('');
     }
 )
