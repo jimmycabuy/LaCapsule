@@ -5,7 +5,7 @@ for(var i = 0 ; i < cookie.length ; i++){
         if (this.src.indexOf('cookie-1') != -1) {
             this.src = "/cookie-2.jpg"
         } else {
-            this.remove()
+            this.style.opacity = "0";
         }
     })
 }
