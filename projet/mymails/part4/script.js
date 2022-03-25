@@ -1,0 +1,41 @@
+// $(".trash").click(
+//     function () {
+//         $(this).parent().remove();
+//         var messageCount = $(".card").length;
+//         $("#nombre").text(messageCount);
+//     }
+// )
+
+var messageCount = $(".card").length;
+$("#nombre").text(messageCount);
+
+$("#allpage").on("click", ".trash", function () {
+    $(this).parent().remove();
+})
+
+$("#bouton").click(
+    function () {
+        var newP = $('#barre').val();
+        var newCard = `
+        <div class="card">
+            <img class="avatar" src="/assets/jimmy.jpg" alt="jimmy">
+                <div class="person">
+                    <h6 class="name">Jimmy Cabuy</h6>
+                    <p>${newP}</p>
+                </div>
+            <img class="trash" src="/assets/trash.png" alt="trash">
+        </div>
+`;
+        $('#allpage').append(newCard);
+        var messageCount = $(".card").length;
+        $("#nombre").text(messageCount);
+        // $(".trash").click(
+        //     function () {
+        //         $(this).parent().remove();
+        //         var messageCount = $(".card").length;
+        //         $("#nombre").text(messageCount);
+        //     }
+        // )
+        $("#barre").val('');
+    }
+)
