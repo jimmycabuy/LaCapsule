@@ -39,3 +39,46 @@ $("#bouton").click(
         $("#barre").val('');
     }
 )
+
+// var messageCoount = 0;
+// $("#search-bouton").click(
+//     function () {
+//         $(".name").each(
+//             function () {
+//                 var newSearch = $('#search-message').val();
+//                 if (newSearch != $(this).text()) {
+//                     $(this).parent().parent().hide();
+//                 } else {
+//                     $(this);
+//                     newSearch.each(
+//                         function () {
+//                             messageCoount++;
+//                         }
+//                     )
+//                     console.log(newSearch);
+//                     $("#nombre").text(messageCoount);
+//                 }
+//             }
+//         )
+//         $("#search-message").val('');
+//     }
+// )
+
+
+$("#search-bouton").click(
+    function () {
+        var newSearch = $('#search-message').val();
+        $(".name").each(
+            function () {
+                if (newSearch != $(this).text()) {
+                    $(this).parent().parent().hide();
+                } else {
+                    $(this);
+                }
+            }
+            );
+            const messageCount = $(this).length;
+            $("#nombre").text(messageCount);
+            $("#search-message").val('');
+    }
+)
