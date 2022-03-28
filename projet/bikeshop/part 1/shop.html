@@ -10,11 +10,14 @@
   <link rel="stylesheet" href="/style.css">
   <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
   <title>BikeShop - Shop</title>
-  <script src="https://kit.fontawesome.com/a41e9403cf.js" crossorigin="anonymous"></script>
+  <script src="https://kit.fontawesome.com/544da27e53.js" crossorigin="anonymous"></script>
 
 </head>
 
 <body>
+
+
+
 
   <!-- header -->
   <nav class="navbar navbar-light bg-dark">
@@ -24,11 +27,79 @@
     </a>
   </nav>
 
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a href="index.html">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Shop</li>
+    </ol>
+  </nav>
 
 
   <h1>Basket</h1>
 
-
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th class="w-25" scope="col">Picture</th>
+        <th scope="col">Model</th>
+        <th scope="col">Quantity</th>
+        <th scope="col">Price</th>
+        <th scope="col">Total</th>
+        <th scope="col">Suppr</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">0</th>
+        <td class="align-middle"><img src="/bike-1.jpg" alt="" style="width: 25%;"></td>
+        <td class="align-middle">BIKO45</td>
+        <td class="align-middle"><input type="text">
+          <a id="bouton-update" href="#"><i class="fa-solid fa-arrows-rotate"></i></a>
+        <td class="align-middle">679 €</td>
+        <td class="align-middle">1358 €</td>
+        <td class="align-middle"><a id="bouton-trash" href="#"><i class="fa-solid fa-trash-can"></i></a></td>
+      </tr>
+      <tr>
+        <th scope="row">1</th>
+        <td class="align-middle"><img src="/bike-2.jpg" alt="" style="width: 25%;"></td>
+        <td class="align-middle">ZOOKY7</td>
+        <td class="align-middle"><input type="text">
+          <a id="bouton-update" href="#"><i class="fa-solid fa-arrows-rotate"></i></a>
+        <td class="align-middle">1399 €</td>
+        <td class="align-middle">1399 €</td>
+        <td class="align-middle"><a id="bouton-trash" href="#"><i class="fa-solid fa-trash-can"></i></a></td>
+      </tr>
+      <tr>
+        <th scope="row">2</th>
+        <td class="align-middle"><img src="/bike-3.jpg" alt="" style="width: 25%;"></td>
+        <td class="align-middle">LIKO89</td>
+        <td class="align-middle"><input type="text">
+          <a id="bouton-update" href="#"><i class="fa-solid fa-arrows-rotate"></i></a>
+        <td class="align-middle">799 €</td>
+        <td class="align-middle">799 €</td>
+        <td class="align-middle"><a id="bouton-trash" href="#"><i class="fa-solid fa-trash-can"></i></a></td>
+      </tr>
+      <tr class="table-borderless">
+        <th scope="row"></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="align-middle">Total Basket</td>
+        <td class="align-middle">3556 €</td>
+        <td></td>
+      </tr>
+      <tr class="table-borderless">
+        <th scope="row"></th>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td></td>
+        <td class="align-middle"><a id="bouton-checkout" href="#">Checkout</a></td>
+      </tr>
+    </tbody>
+  </table>
 
 
 

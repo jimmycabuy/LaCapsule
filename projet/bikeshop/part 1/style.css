@@ -1,9 +1,10 @@
-body{
+body {
   font-family: 'Darker Grotesque', sans-serif;
 }
 
-a, a:hover{
-  color: white
+#top-logo-page,
+#top-logo-page:hover {
+  color: white;
 }
 
 #picture-header {
@@ -15,8 +16,47 @@ a, a:hover{
 }
 
 .card {
- margin-bottom: 20px;
+  margin-bottom: 20px;
 }
-.basket-img{
+
+.basket-img {
   width: 170px;
+}
+
+.btn {
+  border: 2px solid #4D96FF;
+  border-radius: 20%;
+  color: #4D96FF;
+  background-color: white;
+}
+
+#bouton-trash {
+  border: 2px solid #4D96FF;
+  border-radius: 20%;
+  color: #4D96FF;
+  background-color: white;
+  padding: 5%;
+  padding-left: 7%;
+  padding-right: 7%;
+}
+
+#bouton-update {
+  border: 2px solid #4D96FF;
+  border-radius: 20%;
+  color: #4D96FF;
+  background-color: white;
+  padding: 1%;
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+#bouton-checkout{
+  border: 2px solid #4D96FF;
+  border-radius: 7%;
+  color: #4D96FF;
+  background-color: white;
+  padding-left: 5%;
+  padding-right: 5%;
+  padding-top: 2%;
+  padding-bottom: 2%;
 }
