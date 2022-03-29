@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="/stylesheets/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Darker+Grotesque&display=swap" rel="stylesheet">
+    <title><%= title %></title>
+    <script src="https://kit.fontawesome.com/544da27e53.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+
+
+
+
+    <!-- header -->
+    <nav class="navbar navbar-light bg-dark">
+        <a id="top-logo-page" class="navbar" href="/">
+            <img src="/images/bike-logo.svg" width="50" height="50" class="logo" alt="">
+            The Bike Shop Experience
+        </a>
+    </nav>
+
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Shop</li>
+        </ol>
+    </nav>
+
+
+
+
+    <div class="container col-12">
+        <h1>Basket</h1>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th class="w-25" scope="col">Picture</th>
+                    <th scope="col">Model</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Price</th>
+                    <th scope="col">Total</th>
+                    <th scope="col">Suppr</th>
+                </tr>
+            </thead>
+            <tbody>
+                <%
+                var totalPrice = 0;
+                %>
+                <% for(var i = 0 ; i < dataCardBike.length ; i++){
+                    %>
+                <tr>
+                    <th scope="row"><%= i %></th>
+                    <td class="align-middle"><img src=<%= dataCardBike[i].urlImage %> alt="" style="width: 25%;"></td>
+                    <td class="align-middle"><%= dataCardBike[i].nom %></td>
+                    <td class="align-middle"><input type="text" value=<%= dataCardBike[i].quantity %>>
+                        <a id="bouton-update" href="#"><i class="fa-solid fa-arrows-rotate"></i></a></td>
+                    <td class="align-middle"><%= dataCardBike[i].prix %> €</td>
+                    <td class="align-middle"><%= dataCardBike[i].prix * dataCardBike[i].quantity %> €</td>
+                    <td class="align-middle"><a id="bouton-trash" href="#"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
+                </tr>
+                <%
+                totalPrice += dataCardBike[i].prix * dataCardBike[i].quantity;
+            }
+            %>
+                <tr class="table-borderless">
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="align-middle">Total Basket</td>
+                    <td class="align-middle"><%= totalPrice %> €</td>
+                    <td></td>
+                </tr>
+                <tr class="table-borderless">
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a id="bouton-checkout" href="#">Checkout</a></td>
+                </tr>
+
+
+                <!-- <tr>
+                    <th scope="row">0</th>
+                    <td class="align-middle"><img src="/images/bike-1.jpg" alt="" style="width: 25%;"></td>
+                    <td class="align-middle">BIKO7</td>
+                    <td class="align-middle"><input type="text">
+                        <a id="bouton-update" href="#"><i class="fa-solid fa-arrows-rotate"></i></a>
+                    <td class="align-middle">679 €</td>
+                    <td class="align-middle">1358 €</td>
+                    <td class="align-middle"><a id="bouton-trash" href="#"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">1</th>
+                    <td class="align-middle"><img src="/images/bike-2.jpg" alt="" style="width: 25%;"></td>
+                    <td class="align-middle">ZOOKY7</td>
+                    <td class="align-middle"><input type="text">
+                        <a id="bouton-update" href="#"><i class="fa-solid fa-arrows-rotate"></i></a>
+                    <td class="align-middle">1399 €</td>
+                    <td class="align-middle">1399 €</td>
+                    <td class="align-middle"><a id="bouton-trash" href="#"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row">2</th>
+                    <td class="align-middle"><img src="/images/bike-3.jpg" alt="" style="width: 25%;"></td>
+                    <td class="align-middle">LIKO89</td>
+                    <td class="align-middle"><input type="text">
+                        <a id="bouton-update" href="#"><i class="fa-solid fa-arrows-rotate"></i></a>
+                    <td class="align-middle">799 €</td>
+                    <td class="align-middle">799 €</td>
+                    <td class="align-middle"><a id="bouton-trash" href="#"><i class="fa-solid fa-trash-can"></i></a>
+                    </td>
+                </tr>
+                <tr class="table-borderless">
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="align-middle">Total Basket</td>
+                    <td class="align-middle">3556 €</td>
+                    <td></td>
+                </tr>
+                <tr class="table-borderless">
+                    <th scope="row"></th>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td><a id="bouton-checkout" href="#">Checkout</a></td>
+                </tr> -->
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+
+    <!-- scripts -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
