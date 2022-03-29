@@ -1,5 +1,5 @@
 body {
-  font-family: 'Darker Grotesque', sans-serif;
+  font-family: 'Poppins', sans-serif;
 }
 
 #top-logo-page,
@@ -59,4 +59,9 @@ body {
   padding-right: 5%;
   padding-top: 2%;
   padding-bottom: 2%;
+}
+
+#totalPrice,
+#totalBasket {
+  font-weight: bold;
 }
