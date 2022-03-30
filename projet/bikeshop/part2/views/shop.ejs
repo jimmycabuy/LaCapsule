@@ -62,7 +62,7 @@
                     <th scope="row"><%= i %></th>
                     <td class="align-middle"><img src=<%= dataCardBike[i].urlImage %> alt="" style="width: 25%;"></td>
                     <td class="align-middle"><%= dataCardBike[i].nom %></td>
-                    <td class="align-middle"><input type="text" value=<%= dataCardBike[i].quantity %>>
+                    <td class="align-middle"><input type="number" value=<%= dataCardBike[i].quantity %>>
                         <a id="bouton-update" href="#"><i class="fa-solid fa-arrows-rotate"></i></a></td>
                     <td class="align-middle"><%= dataCardBike[i].prix %> €</td>
                     <td class="align-middle"><%= dataCardBike[i].prix * dataCardBike[i].quantity %> €</td>
