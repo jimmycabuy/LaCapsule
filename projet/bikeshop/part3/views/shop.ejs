@@ -58,7 +58,7 @@
 
                     <td class="align-middle">
                         <form action="/update-shop" method="POST">
-                            <input type="hidden" name="position" value="<%= i %>">
+                            <input name="position" type="hidden" value="<%= i %>">
                             <input name="quantity" type="number" value="<%= dataCardBike[i].quantity %>">
                             <button id="bouton-update"><i class="fa-solid fa-arrows-rotate"></i></button>
                         </form>

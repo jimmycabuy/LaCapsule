@@ -34,26 +34,7 @@ var dataBike = [
   },
 ];
 
-var dataCardBike = [
-  // {
-  //   nom: "BIKO7",
-  //   urlImage: "/images/bike-1.jpg",
-  //   prix: 679,
-  //   quantity: 3,
-  // },
-  // {
-  //   nom: "ZOOK7",
-  //   urlImage: "/images/bike-2.jpg",
-  //   prix: 1399,
-  //   quantity: 1,
-  // },
-  // {
-  //   nom: "LIKO89",
-  //   urlImage: "/images/bike-3.jpg",
-  //   prix: 799,
-  //   quantity: 3,
-  // },
-];
+var dataCardBike = [ ];
 
 router.get("/", function (req, res, next) {
   res.render("index", { dataBike: dataBike });
