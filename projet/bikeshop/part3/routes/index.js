@@ -60,17 +60,24 @@ router.get("/", function (req, res, next) {
 });
 
 router.get("/shop", function (req, res) {
-  dataCardBike.push({ nom: req.query.nom , prix: req.query.prix, urlImage: req.query.urlImage, quantity:1 })
-  res.render("shop", {dataCardBike: dataCardBike});
+  dataCardBike.push({
+    nom: req.query.nom,
+    prix: req.query.prix,
+    urlImage: req.query.urlImage,
+    quantity: 1,
+  });
+  res.render("shop", { dataCardBike: dataCardBike });
 });
 
 router.get("/delete-shop", function (req, res) {
-  dataCardBike.splice(req.query.position, 1)
-  res.render("shop", {dataCardBike: dataCardBike});
+  dataCardBike.splice(req.query.position, 1);
+  res.render("shop", { dataCardBike: dataCardBike });
 });
 
-router.get("/update-shop", function (req, res) {
-  res.render("shop", {dataCardBike: dataCardBike});
+router.post("/update-shop", function (req, res) {
+  console.log(req.body);
+  dataCardBike[req.body.position].quantity = req.body.quantity;
+  res.render("shop", { dataCardBike: dataCardBike });
 });
 
 module.exports = router;
