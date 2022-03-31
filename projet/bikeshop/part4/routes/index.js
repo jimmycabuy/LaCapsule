@@ -42,6 +42,7 @@ router.get("/shop", function (req, res) {
   if (!req.session.dataCardBike) {
     req.session.dataCardBike = [];
   }
+  
   var bikeAlreadyInCard = false;
 
   for (var i = 0; i < req.session.dataCardBike.length; i++) {
