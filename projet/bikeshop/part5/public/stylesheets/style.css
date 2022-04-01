@@ -66,16 +66,16 @@ body {
   font-weight: bold;
 }
 
-#cardEmpty{
+#cardEmpty {
   color: red;
   font-style: italic;
 }
 
-#text-confirm{
+#text-confirm {
   text-align: center;
   margin-top: 2%;
 }
 
-#velo-confirm{
+#velo-confirm {
   width: 25%;
 }
