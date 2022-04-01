@@ -79,7 +79,7 @@ router.get("/success", (req, res) => {
 });
 
 router.get("/cancel", (req, res) => {
-  res.render("cancel");
+  res.render("cancel", {dataBike: dataBike});
 });
 
 const Stripe = require("stripe");

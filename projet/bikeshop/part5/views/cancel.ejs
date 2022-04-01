@@ -27,10 +27,31 @@
   <div id="picture-header"></div>
 
   <body>
-    <div class="container">
-      <div class="row d-flex justify-content-center">
-        <h4>Votre commande n'a pas été prise en compte !</h4>
+    <h4 class="text-center">Votre commande n'a pas été prise en compte !</h4>
+    <div class="container d-flex">
+      <div class="row d-flex text-center">
+
+      </div id="card-cancel" class="card">
+      <% for(var i = 0 ; i < dataBike.length ; i++){
+        %>
+      <div class="card text-center mr-2 ml-2 mb-2 mt-4 pr-2 pl-2 pb-2 pt-4">
+        <img src=<%= dataBike[i].urlImage %> alt="bike picture">
+        <div class="card-body">
+          <h4 class="card-name"><%= dataBike[i].nom %></h4>
+          <div class="d-flex justify-content-center text-center align-items-center">
+            <p class="card-text m-0"><%= dataBike[i].prix %>€</p>
+          </div>
+          <div class="align-items-center">
+            <a href="/shop?nom=<%= dataBike[i].nom %>&prix=<%= dataBike[i].prix %>&urlImage=<%= dataBike[i].urlImage %>"
+              class="
+                  btn btn-primary mt-2">Buy</a>
+          </div>
+
+        </div>
       </div>
+      <%
+      }
+      %>
     </div>
   </body>
 
