@@ -3,32 +3,32 @@ var router = express.Router();
 
 var dataBike = [
   {
-    nom: "BIKO7",
+    nom: "COWBOY",
     urlImage: "/images/bike-1.jpg",
-    prix: 679,
+    prix: 2400,
   },
   {
-    nom: "ZOOK7",
+    nom: "GIANT",
     urlImage: "/images/bike-2.jpg",
-    prix: 1399,
+    prix: 1300,
   },
   {
-    nom: "LIKO89",
+    nom: "SCOTT",
     urlImage: "/images/bike-3.jpg",
-    prix: 799,
+    prix: 1900,
   },
   {
-    nom: "GEWO8",
+    nom: "TREK",
     urlImage: "/images/bike-4.jpg",
-    prix: 839,
+    prix: 4100,
   },
   {
-    nom: "KIWIT",
+    nom: "VAN MOOF",
     urlImage: "/images/bike-5.jpg",
-    prix: 1249,
+    prix: 2500,
   },
   {
-    nom: "NASAY",
+    nom: "ANGELL",
     urlImage: "/images/bike-6.jpg",
     prix: 899,
   },

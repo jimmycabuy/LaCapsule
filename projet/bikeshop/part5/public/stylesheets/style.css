@@ -79,10 +79,19 @@ body {
 #velo-confirm {
   width: 25%;
 }
-#nom-cancel{
+
+#nom-cancel {
   font-size: 90%;
 }
 
-#prix-cancel{
+#prix-cancel {
   font-size: 90%;
+}
+
+#h4 {
+  margin-bottom: 1%;
+}
+
+#navbar-cancel {
+  background-color: black;
 }
