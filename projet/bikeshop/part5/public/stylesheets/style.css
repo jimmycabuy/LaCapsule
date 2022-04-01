@@ -70,3 +70,8 @@ body {
   color: red;
   font-style: italic;
 }
+
+#text-confirm{
+  text-align: center;
+  margin-top: 2%;
+}

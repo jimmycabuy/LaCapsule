@@ -100,7 +100,7 @@ router.post("/create-checkout-session", async (req, res) => {
         product_data: {
           name: req.session.dataCardBike[i].nom,
         },
-        price: req.session.dataCardBike[i].prix * 100,
+        unit_amount: req.session.dataCardBike[i].prix * 100,
       },
       quantity: req.session.dataCardBike[i].quantity,
     });
