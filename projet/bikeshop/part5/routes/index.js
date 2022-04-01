@@ -30,7 +30,7 @@ var dataBike = [
   {
     nom: "ANGELL",
     urlImage: "/images/bike-6.jpg",
-    prix: 899,
+    prix: 2900,
   },
 ];
 
