@@ -24,16 +24,16 @@ body {
 }
 
 .btn {
-  border: 2px solid #4D96FF;
+  border: 2px solid #97DBAE;
   border-radius: 20%;
-  color: #4D96FF;
+  color: #97DBAE;
   background-color: white;
 }
 
 #bouton-trash {
-  border: 2px solid #4D96FF;
+  border: 2px solid #97DBAE;
   border-radius: 20%;
-  color: #4D96FF;
+  color: #97DBAE;
   background-color: white;
   padding: 5%;
   padding-left: 7%;
@@ -41,9 +41,9 @@ body {
 }
 
 #bouton-update {
-  border: 2px solid #4D96FF;
+  border: 2px solid #97DBAE;
   border-radius: 20%;
-  color: #4D96FF;
+  color: #97DBAE;
   background-color: white;
   padding: 1%;
   padding-left: 2%;
@@ -51,9 +51,9 @@ body {
 }
 
 #bouton-checkout {
-  border: 2px solid #4D96FF;
+  border: 2px solid #97DBAE;
   border-radius: 7%;
-  color: #4D96FF;
+  color: #97DBAE;
   background-color: white;
   padding-left: 5%;
   padding-right: 5%;
