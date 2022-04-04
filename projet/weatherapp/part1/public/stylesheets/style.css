@@ -54,3 +54,8 @@ a {
 #bouton-trash {
   color: #ffc107;
 }
+
+#noCity{
+  color: red;
+  font-style: italic;
+}

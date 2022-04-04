@@ -24,6 +24,8 @@
 
       <div class="row">
 
+
+
         <div class="col-12 col-lg-6 offset-lg-6">
           <form action="/add-city" method="post" class="input-group mb-3">
             <input name="cityadded" type="text" class="form-control" placeholder="Enter city name"
@@ -34,10 +36,19 @@
           </form>
         </div>
 
+
+
         <div class="col-12 col-lg-6">
           <img class="img-fluid" src="/images/map.png" alt="map">
         </div>
-
+        <%
+        if (cityList.length === 0) { %>
+        <div class="col-12 col-lg-6">
+          <h6 id="noCity">No cities found</h6>
+        </div>
+        <%
+        }
+        else { %>
         <div class="col-12 col-lg-6">
 
           <ul class="list-group">
@@ -62,6 +73,9 @@
           <%
           }
           %>
+          <%
+        }
+        %>
 
           <!-- <ul class="list-group">
             <li class="margin border-0 list-group-item d-flex justify-content-center align-items-center">
