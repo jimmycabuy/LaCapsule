@@ -1,0 +1,52 @@
+body {
+
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.empty {
+  font-size: 16px;
+  color: #ffc107;
+}
+
+.logout {
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+.home {
+  background-image: url("/images/weather.jpg");
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+
+  color: #FFFFFF;
+  text-shadow: 1px 1px 1px black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.navItem {
+  margin-bottom: 10px;
+}
+
+.get_started {
+  margin-bottom: 70px;
+}
+
+.header {
+  margin-bottom: 50px;
+  color: #FFFFFF;
+}
+
+.margin{
+  gap: 2%;
+}
