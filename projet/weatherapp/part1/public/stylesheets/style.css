@@ -47,6 +47,10 @@ a {
   color: #FFFFFF;
 }
 
-.margin{
+.margin {
   gap: 2%;
+}
+
+#bouton-trash {
+  color: #ffc107;
 }

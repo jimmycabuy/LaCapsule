@@ -25,12 +25,13 @@
       <div class="row">
 
         <div class="col-12 col-lg-6 offset-lg-6">
-          <div class="input-group mb-3">
-            <input type="text" class="form-control" placeholder="Enter city name" aria-label="New city name">
+          <form action="/add-city" method="post" class="input-group mb-3">
+            <input name="cityadded" type="text" class="form-control" placeholder="Enter city name"
+              aria-label="New city name">
             <div class="input-group-append">
-              <button class="btn btn-warning" type="button">Add</button>
+              <button class="btn btn-warning" type="submit">Add</button>
             </div>
-          </div>
+          </form>
         </div>
 
         <div class="col-12 col-lg-6">
@@ -54,7 +55,7 @@
                 <span class="badge badge-warning badge-pill"><%= cityList[i].tempMin %>°C</span>
                 <span class="badge badge-secondary badge-pill"><%= cityList[i].tempMax %>°C</span>
               </div>
-              <i class="fa-regular fa-circle-xmark"></i>
+              <a id="bouton-trash" href="/delete-city?cityadded=<%= i %>"><i class="fa-regular fa-circle-xmark"></i></a>
             </li>
 
           </ul>
@@ -102,14 +103,6 @@
 
       </div>
     </div>
-
-
-
-
-
-
-
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
       integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous">
