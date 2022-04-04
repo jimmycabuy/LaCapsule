@@ -1,6 +1,6 @@
 body {
 
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  font: 14px 'Poppins', sans-serif;
 }
 
 a {
@@ -55,7 +55,15 @@ a {
   color: #ffc107;
 }
 
-#noCity{
+#noCity {
   color: red;
   font-style: italic;
+}
+
+#li {
+  border-radius: 0;
+  margin-bottom: 0;
+  border-bottom: 0;
+  border-right: 0;
+  border-left: 0;
 }
