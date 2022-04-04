@@ -1,13 +1,29 @@
-var express = require('express');
+var express = require("express");
 var router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Express' });
+var cityList = [
+  {
+    nom: "Paris",
+    image: "/images/picto-1.png",
+    descriptif: "Nuageux",
+    tempMin: 7,
+    tempMax: 12,
+  },
+  {
+    nom: "Lyon",
+    image: "/images/picto-1.png",
+    descriptif: "Nuageux",
+    tempMin: 4,
+    tempMax: 10,
+  }
+];
+
+router.get("/", function (req, res, next) {
+  res.render("login");
 });
 
-router.get('/weather', function(req, res, next) {
-  res.render('weather', { title: 'Express' });
+router.get("/weather", function (req, res, next) {
+  res.render("weather", { cityList: cityList });
 });
 
 module.exports = router;
