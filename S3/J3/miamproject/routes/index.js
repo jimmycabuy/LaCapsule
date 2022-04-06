@@ -19,7 +19,6 @@ router.post('/order', async function (req, res, next) {
     beverage: req.body.beverage
   })
   var mealSaved = await newMeal.save();
-  // res.end(newMeal);
   res.render('index');
 });
 
