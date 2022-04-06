@@ -21,6 +21,6 @@ var citySchema = mongoose.Schema({
     tempMax: Number
 })
 
-var cityModel = mongoose.model('index', citySchema);
+var cityModel = mongoose.model('cities', citySchema);
 
 module.exports = cityModel;

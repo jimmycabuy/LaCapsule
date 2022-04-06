@@ -52,8 +52,8 @@
 
           <ul class="list-group">
             <li class="margin border-0 list-group-item d-flex justify-content-center align-items-center">
-              <span>Update cities</span>
-              <span><i class="fa-solid fa-arrows-rotate"></i></span>
+              <a href="/update-data"><span>Update data</span>
+              <span><i class="fa-solid fa-arrows-rotate"></i></span></a>
             </li>
             <% for(var i = 0 ; i < cityList.length ; i++){
               %>
@@ -65,7 +65,7 @@
                 <span class="badge badge-warning badge-pill"><%= cityList[i].tempMin %>°C</span>
                 <span class="badge badge-secondary badge-pill"><%= cityList[i].tempMax %>°C</span>
               </div>
-              <a id="bouton-trash" href="/delete-city?cityadded=<%= i %>"><i class="fa-regular fa-circle-xmark"></i></a>
+              <a id="bouton-trash" href="/delete-city?cityadded=<%= cityList[i]._id %>"><i class="fa-regular fa-circle-xmark"></i></a>
             </li>
 
           </ul>
