@@ -58,14 +58,20 @@ router.get("/delete-city", async function (req, res, next) {
 });
 
 router.get("/update-data", async function (req, res, next) {
-  var dataAPI = req.body.cityadded;
-  var requete = request("GET", `https://api.openweathermap.org/data/2.5/weather?q=${dataAPI}&lang=fr&units=metric&appid=a6e3eaa80322d67999b7ac143be3fddb`);
-  var resultWS = JSON.parse(requete.body);
+  var cityList = await cityModel.find();
+
   for (var i = 0; i < cityList.length; i++) {
-    await cityList[i].updateOne({
-      nom: resultWS.name
+    var dataAPI = cityList[i].nom;
+    var requete = request("GET", `https://api.openweathermap.org/data/2.5/weather?q=${dataAPI}&lang=fr&units=metric&appid=a6e3eaa80322d67999b7ac143be3fddb`);
+    var resultWS = JSON.parse(requete.body);
+    await cityModel.updateOne({
+      _id: cityList[i]._id
     }, {
-      cityModel
+      nom: cityList[i].name,
+      image: `http://openweathermap.org/img/wn/${resultWS.weather[0].icon}.png`,
+      descriptif: resultWS.weather[0].description,
+      tempMin: resultWS.main.temp_min,
+      tempMax: resultWS.main.temp_max
     });
   }
   cityList = await cityModel.find();
