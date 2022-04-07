@@ -100,13 +100,17 @@ router.post("/sign-in", async function (req, res, next) {
     req.session.currentId = userList._id;
     req.session.currentUsername = userList.username;
     res.redirect('/weather');
+    console.log("je suis connecté");
   } else {
     res.redirect('/');
   }
+
 });
 
-router.get("/logout", function (req, res, next) {
+router.get("/logout", async function (req, res, next) {
+  req.session.user = null;
   res.redirect('/');
+  console.log("je suis deconnecté");
 });
 
 module.exports = router;
