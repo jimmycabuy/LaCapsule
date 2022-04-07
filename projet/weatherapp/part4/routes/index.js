@@ -96,14 +96,17 @@ router.post("/sign-in", async function (req, res, next) {
   var userList = await userModel.findOne({
     email: req.body.email_in
   });
-  if (req.body.email_in == userList.email && req.body.password_in == userList.password) {
-    res.redirect('/weather');
+  if (userList && req.body.email_in == userList.email && req.body.password_in == userList.password) {
     req.session.currentId = userList._id;
     req.session.currentUsername = userList.username;
     res.redirect('/weather');
   } else {
-    res.redirect('/')
+    res.redirect('/');
   }
+});
+
+router.get("/logout", function (req, res, next) {
+  res.redirect('/');
 });
 
 module.exports = router;
