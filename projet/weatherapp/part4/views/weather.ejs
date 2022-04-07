@@ -32,7 +32,7 @@
             <input name="cityadded" type="text" class="form-control" placeholder="Enter city name"
               aria-label="New city name">
             <div class="input-group-append">
-              <button class="btn btn-warning" type="submit">Add</button>
+              <button class="btn btn-outline-secondary" type="submit">Add</button>
             </div>
           </form>
         </div>
@@ -62,8 +62,8 @@
               <div>
                 <span><%= cityList[i].descriptif %></span>
                 <span><img src="<%= cityList[i].image %>" alt="cloud"></span>
-                <span class="badge badge-warning badge-pill"><%= cityList[i].tempMin %>°C</span>
-                <span class="badge badge-secondary badge-pill"><%= cityList[i].tempMax %>°C</span>
+                <span class="badge badge-info badge-pill"><%= cityList[i].tempMin %>°C</span>
+                <span class="badge badge-danger badge-pill"><%= cityList[i].tempMax %>°C</span>
               </div>
               <a id="bouton-trash" href="/delete-city?cityadded=<%= cityList[i]._id %>"><i
                   class="fa-regular fa-circle-xmark"></i></a>
