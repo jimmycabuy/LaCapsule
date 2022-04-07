@@ -1,7 +1,5 @@
 var mongoose = require('mongoose');
 
-var mongoose = require('mongoose');
-
 var options = {
     connectTimeoutMS: 5000,
     useNewUrlParser: true,
@@ -12,15 +10,3 @@ mongoose.connect('mongodb+srv://admin:lacapsule@cluster0.fhj5x.mongodb.net/myFir
         console.log(err);
     }
 );
-
-var citySchema = mongoose.Schema({
-    nom: String,
-    image: String,
-    descriptif: String,
-    tempMin: Number,
-    tempMax: Number
-})
-
-var cityModel = mongoose.model('cities', citySchema);
-
-module.exports = cityModel;
