@@ -82,14 +82,21 @@ router.get("/update-data", async function (req, res, next) {
 
 router.post("/sign-up", async function (req, res, next) {
 
-  var newUser = new userModel({
-    username: req.body.username,
-    email: req.body.email,
-    password: req.body.password,
+  var userAlreadyExist = await userModel.findOne({
+    email: req.body.email
   })
-  req.session.currentId = await newUser.save();
-  req.session.currentUsername = req.body.username;
-  res.redirect('/weather');
+  if (!userAlreadyExist) {
+    var newUser = new userModel({
+      username: req.body.username,
+      email: req.body.email,
+      password: req.body.password,
+    })
+    req.session.currentId = await newUser.save();
+    req.session.currentUsername = req.body.username;
+    res.redirect('/weather');
+  } else {
+    res.redirect('/');
+  }
 });
 
 router.post("/sign-in", async function (req, res, next) {
@@ -100,7 +107,7 @@ router.post("/sign-in", async function (req, res, next) {
     req.session.currentId = userList._id;
     req.session.currentUsername = userList.username;
     res.redirect('/weather');
-    console.log("je suis connecté");
+    console.log("Je suis connecté");
   } else {
     res.redirect('/');
   }
@@ -110,7 +117,7 @@ router.post("/sign-in", async function (req, res, next) {
 router.get("/logout", async function (req, res, next) {
   req.session.user = null;
   res.redirect('/');
-  console.log("je suis deconnecté");
+  console.log("Je suis deconnecté");
 });
 
 module.exports = router;
