@@ -22,7 +22,6 @@ var cityFromData = document.getElementsByClassName("city-card");
 //     popupAnchor: [20, -9]
 // });
 
-
 for (var i = 0; i < cityFromData.length; i++) {
 
     var nom = cityFromData[i].dataset.name;
