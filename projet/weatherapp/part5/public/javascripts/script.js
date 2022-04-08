@@ -7,9 +7,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
     attribution: '(c) <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 }).addTo(mymap);
 
-
 var cityFromData = document.getElementsByClassName("city-card");
-// var nameFromData = document.getElementsByClassName("city-card");
 
 // var customIcon = L.icon({
 //     iconUrl: './images/marker.png',
