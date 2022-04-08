@@ -9,7 +9,7 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
 
 
 var cityFromData = document.getElementsByClassName("city-card");
-var nameFromData = document.getElementsByClassName("city-card");
+// var nameFromData = document.getElementsByClassName("city-card");
 
 // var customIcon = L.icon({
 //     iconUrl: './images/marker.png',
@@ -26,8 +26,8 @@ var nameFromData = document.getElementsByClassName("city-card");
 
 for (var i = 0; i < cityFromData.length; i++) {
 
-    var nom = nameFromData[i].dataset.name;
+    var nom = cityFromData[i].dataset.name;
     var longitude = cityFromData[i].dataset.lon;
     var lattitude = cityFromData[i].dataset.lat;
-    L.marker([lattitude, longitude], /* {icon: customIcon} */).addTo(mymap).bindPopup(nom);
+    L.marker([lattitude, longitude], /* {icon: customIcon} */ ).addTo(mymap).bindPopup(nom);
 }
