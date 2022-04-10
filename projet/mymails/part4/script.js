@@ -7,7 +7,7 @@
 // )
 
 var messageCount = $(".card").length;
-$("#nombre").text(messageCount);
+$("#nombre").text(messageCount)
 
 $("#allpage").on("click", ".trash", function () {
     $(this).parent().remove();
