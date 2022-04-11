@@ -1,10 +1,10 @@
 var mongoose = require('mongoose');
 
 var orderSchema = mongoose.Schema({
-    articles: {
+    articles: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'articles'
-    },
+    }],
     total: Number,
     shipping_cost: Number,
     date_insert: Date,

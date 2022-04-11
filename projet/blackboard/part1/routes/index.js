@@ -40,8 +40,13 @@ router.get('/orders-list-page', async function (req, res, next) {
 });
 
 /* GET Order detail page. */
-router.get('/order-page', function (req, res, next) {
-  res.render('order');
+router.get('/order-page', async function (req, res, next) {
+  var orderDetail = await orderModel.findById(
+    req.query.id
+  ).populate('articles').exec();
+  res.render('order', {
+    orderDetail
+  });
 });
 
 /* GET chart page. */

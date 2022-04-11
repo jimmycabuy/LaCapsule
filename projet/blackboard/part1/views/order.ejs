@@ -127,7 +127,7 @@
                 </thead>
 
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <td>Mon Oct 01 2018 02:00:00 GMT+0200 (GMT+02:00)</td>
                     <td>869€</td>
                     <td>23€</td>
@@ -138,7 +138,46 @@
                     <td>22 Rue des Martyrs</td>
                     <td>Paris</td>
                     <td>75009</td>
+                  </tr> -->
 
+                  <%
+                  var paiementStatut = "";
+                      var shipmentStatut = "";
+                      var datePaiementStatut = "";
+                      var dateShipmentStatut = "";
+
+                      if(orderDetail.status_payment === "validated"){
+                        paiementStatut = "status-success";
+                        datePaiementStatut = orderDetail.date_payment;
+                      }
+                      else if (orderDetail.status_payment === "refused") {
+                        paiementStatut = "status-danger";
+                      }
+                      else if (orderDetail.status_payment === "waiting") {
+                        paiementStatut = "status-secondary";
+                      }
+
+                      if(orderDetail.status_shipment === true){
+                        shipmentStatut = "status-success";
+                        dateShipmentStatut = orderDetail.date_shipment
+                      }
+
+                      else if(orderDetail.status_shipment === false){
+                        shipmentStatut = "status-danger";
+                      }
+                      %>
+
+                  <tr>
+                    <td><%= orderDetail.date_insert %></td>
+                    <td><%= orderDetail.total %>€</td>
+                    <td><%= orderDetail.shipping_cost%>€</td>
+                    <td class="<%= paiementStatut %>"><i class="fas fa-circle"></i></td>
+                    <td><%= orderDetail.date_payment %></td>
+                    <td class="<%= shipmentStatut %>"><i class="fas fa-circle"></i></td>
+                    <td><%= orderDetail.date_shipment %></td>
+                    <td><%= orderDetail.delivery_address %></td>
+                    <td><%= orderDetail.city %></td>
+                    <td><%= orderDetail.zipcode %></td>
                   </tr>
 
                 </tbody>
@@ -166,7 +205,7 @@
                   </tr>
                 </tfoot>
                 <tbody>
-                  <tr>
+                  <!-- <tr>
                     <td>Ninebot by Segway Kickscooter ES2</td>
                     <td>Urbain - Route (8'), Autonomie Jusqu'à 25 km, Vitesse max. 25 km/h</td>
                     <td>12,5kg</td>
@@ -179,7 +218,20 @@
                     <td>12,5kg</td>
                     <td>370€</td>
                     <td><img src="/images/xiaomi M365-gris.jpg"></td>
+                  </tr> -->
+                  <%
+                  for(var i = 0 ; i < orderDetail.articles.length; i ++){
+                    %>
+                  <tr>
+                    <td><%= orderDetail.articles[i].title %></td>
+                    <td><%= orderDetail.articles[i].description %></td>
+                    <td><%= orderDetail.articles[i].weight %>kg</td>
+                    <td><%= orderDetail.articles[i].price %>€</td>
+                    <td><img src="/images/<%= orderDetail.articles[i].img %>"></td>
                   </tr>
+                  <%
+                  }
+                  %>
 
                 </tbody>
               </table>
