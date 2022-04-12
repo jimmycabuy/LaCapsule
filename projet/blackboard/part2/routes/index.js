@@ -1,8 +1,11 @@
 var express = require('express');
+const {
+  status
+} = require('express/lib/response');
 var router = express.Router();
 var articleModel = require('../models/articles');
 var orderModel = require('../models/orders');
-var userModel = require('../moders/users');
+var userModel = require('../models/users');
 
 /* GET home page. */
 router.get('/', function (req, res, next) {
@@ -10,23 +13,37 @@ router.get('/', function (req, res, next) {
 });
 
 /* GET tasks page. */
-router.get('/tasks-page', function (req, res, next) {
-  res.render('tasks');
+router.get('/tasks-page', async function (req, res, next) {
+  var user = await userModel.findById('5c52e4efaa4beef85aad5e52');
+  var taskList = user.tasks;
+  console.log(taskList)
+  res.render('tasks', {
+    taskList
+  });
 });
 
 /* GET Messages page. */
-router.get('/messages-page', function (req, res, next) {
-  res.render('messages');
+router.get('/messages-page', async function (req, res, next) {
+  var user = await userModel.findById('5c52e4efaa4beef85aad5e52');
+  var messageList = user.messages;
+  res.render('messages', {
+    messageList
+  });
 });
 
 /* GET Users page. */
-router.get('/users-page', function (req, res, next) {
-  res.render('users');
+router.get('/users-page', async function (req, res, next) {
+  var userList = await userModel.find();
+  res.render('users', {
+    userList
+  });
 });
 
 /* GET Catalog page. */
 router.get('/catalog-page', async function (req, res, next) {
-  var articleList = await articleModel.find();
+  var articleList = await articleModel.find({
+    status: "customer"
+  });
   res.render('catalog', {
     articleList
   });

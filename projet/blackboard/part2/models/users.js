@@ -26,8 +26,8 @@ var userSchema = mongoose.Schema({
     status: String,
     gender: String,
     dateInsert: Date,
-    messages: messageSchema,
-    tasks: taskSchema
+    messages: [messageSchema],
+    tasks: [taskSchema]
 })
 
 var userModel = mongoose.model('users', userSchema);
