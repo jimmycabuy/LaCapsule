@@ -151,7 +151,7 @@
 
                       if(orderList[i].status_payment === "validated"){
                         paiementStatut = "status-success";
-                        datePaiementStatut = orderList[i].date_payment;
+                        datePaiementStatut = dateFormat(orderList[i].date_payment);
                       }
                       else if (orderList[i].status_payment === "refused") {
                         paiementStatut = "status-danger";
@@ -162,7 +162,7 @@
 
                       if(orderList[i].status_shipment === true){
                         shipmentStatut = "status-success";
-                        dateShipmentStatut = orderList[i].date_shipment
+                        dateShipmentStatut = dateFormat(orderList[i].date_shipment)
                       }
 
                       else if(orderList[i].status_shipment === false){
@@ -170,7 +170,7 @@
                       }
                       %>
                   <tr>
-                    <td><%= orderList[i].date_insert %></td>
+                    <td><%= dateFormat(orderList[i].date_insert) %></td>
                     <td><%= orderList[i].total %>€</td>
                     <td><%= orderList[i].shipping_cost %>€</td>
                     <td class="<%= paiementStatut %>"><i class="fas fa-circle"></i></td>

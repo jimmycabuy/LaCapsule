@@ -84,7 +84,7 @@
 
                       if(orderDetail.status_payment === "validated"){
                         paiementStatut = "status-success";
-                        datePaiementStatut = orderDetail.date_payment;
+                        datePaiementStatut = dateFormat(orderDetail.date_payment);
                       }
                       else if (orderDetail.status_payment === "refused") {
                         paiementStatut = "status-danger";
@@ -95,7 +95,7 @@
 
                       if(orderDetail.status_shipment === true){
                         shipmentStatut = "status-success";
-                        dateShipmentStatut = orderDetail.date_shipment
+                        dateShipmentStatut = dateFormat(orderDetail.date_shipment);
                       }
 
                       else if(orderDetail.status_shipment === false){
@@ -104,16 +104,16 @@
                       %>
 
                   <tr>
-                    <td><%= orderDetail.date_insert %></td>
+                    <td><%= dateFormat(orderDetail.date_insert) %></td>
                     <td><%= orderDetail.total %>€</td>
                     <td><%= orderDetail.shipping_cost%>€</td>
                     <td class="<%= paiementStatut %>"><i class="fas fa-circle"></i></td>
-                    <td><%= orderDetail.date_payment %></td>
+                    <td><%= datePaiementStatut %></td>
                     <td class="<%= shipmentStatut %>"><i class="fas fa-circle"></i></td>
-                    <td><%= orderDetail.date_shipment %></td>
+                    <td><%= dateShipmentStatut %></td>
                     <td><%= orderDetail.delivery_address %></td>
-                    <td><%= orderDetail.city %></td>
-                    <td><%= orderDetail.zipcode %></td>
+                    <td><%= orderDetail.delivery_city %></td>
+                    <td><%= orderDetail.delivery_zipcode %></td>
                   </tr>
 
                 </tbody>

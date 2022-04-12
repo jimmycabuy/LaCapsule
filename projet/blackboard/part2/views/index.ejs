@@ -45,10 +45,9 @@
             <div class="card text-white bg-warning o-hidden h-100">
               <div class="card-body">
                 <div class="card-body-icon">
-
                   <i class="fas fa-fw fa-users"></i>
                 </div>
-                <div class="mr-5"><%= emptyStocks.length %> Articles indisponibles</div>
+                <div class="mr-5"><%= emptyStocks.length %> articles indisponibles</div>
               </div>
               <a class="card-footer text-white clearfix small z-1" href="/catalog-page">
                 <span class="float-left">View Details</span>
@@ -74,10 +73,9 @@
                 for(var i=0;i<messages.length;i++){
                   if(messages[i].read == false){
                     unreadMessages += 1;
-                
                 } 
                  } %>
-                <div class="mr-5"><%= unreadMessages %> Messages non lus</div>
+                <div class="mr-5"><%= unreadMessages %> messages non lus</div>
 
               </div>
               <a class="card-footer text-white clearfix small z-1" href="/messages-page">
@@ -107,8 +105,7 @@
                     }
                   }
                 %>
-
-                <div class="mr-5"><%= tasksInprogress%> Tâches en cours</div>
+                <div class="mr-5"><%= tasksInprogress%> tâches en cours</div>
 
               </div>
               <a class="card-footer text-white clearfix small z-1" href="/tasks-page">
