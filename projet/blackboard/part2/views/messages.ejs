@@ -148,7 +148,7 @@
               <td><i class="far fa-envelope-open"></i></td>
               <td><%= messageList[i].title %></td>
               <td><%= messageList[i].sender%></td>
-              <td><%= messageList[i].dateExp %></td>
+              <td><%= dateFormat(messageList[i].dateExp) %></td>
             </tr>
             <%
                 } else {
@@ -157,7 +157,7 @@
               <td><i class="fas fa-envelope"></i></td>
               <td><%= messageList[i].title %></td>
               <td><%= messageList[i].sender%></td>
-              <td><%= messageList[i].dateExp %></td>
+              <td><%= dateFormat(messageList[i].dateExp) %></td>
             </tr>
             <%
                 }

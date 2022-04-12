@@ -42,4 +42,11 @@ app.use(function (err, req, res, next) {
   res.render('error');
 });
 
+
+app.locals.dateFormat = function(date){
+  var newDate = new Date(date);
+  var format = newDate.getDate()+'/'+(newDate.getMonth()+1)+"/"+newDate.getFullYear()
+  return format;
+  }
+
 module.exports = app;

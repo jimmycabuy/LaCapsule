@@ -155,16 +155,16 @@
              
               if(taskList[i].dateCloture){
                 colorItem = 'list-group-item-success'
-                information = "Cloturé le " + taskList[i].dateCloture
+                information = "Cloturé le " + dateFormat(taskList[i].dateCloture)
               } else if(!taskList[i].dateCloture && new Date() > taskList[i].dateDue){
                 colorItem = 'list-group-item-danger'
-                information = "Echeance dépassée : "+taskList[i].dateDue
+                information = "Echeance dépassée : "+dateFormat(taskList[i].dateDue)
               }
              %>
           <a href="#" class="list-group-item list-group-item-action   <%=colorItem%>">
             <div class="d-flex w-100 justify-content-between">
               <h5 class="mb-1"><%=taskList[i].category%></h5>
-              <small>Date de la demande: <%=taskList[i].dateInsert%></small>
+              <small>Date de la demande: <%=dateFormat(taskList[i].dateInsert)%></small>
             </div>
             <p class="mb-1"><%=taskList[i].name%></p>
             <small><%=information%></small>
