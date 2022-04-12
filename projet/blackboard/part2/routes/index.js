@@ -8,8 +8,15 @@ var orderModel = require('../models/orders');
 var userModel = require('../models/users');
 
 /* GET home page. */
-router.get('/', function (req, res, next) {
-  res.render('index');
+router.get('/', async function (req, res, next) {
+  var emptyStocks = await articleModel.find({
+    stock: 0
+  });
+  var user = await userModel.findById('5c52e4efaa4beef85aad5e52');
+  res.render('index', {
+    emptyStocks,
+    user
+  });
 });
 
 /* GET tasks page. */
