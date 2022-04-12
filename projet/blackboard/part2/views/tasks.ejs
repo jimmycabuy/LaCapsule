@@ -148,27 +148,28 @@
             </p>
             <small><i class="fas fa-check-square"></i> Cloturée le: 30/12/2018</small>
           </a> -->
-          
-          
-          
-          
-          
-          
-          
-          <%
-            for(var i = 0 ; i < taskList.length ; i++){
-              %>
-          <a href="#" class="list-group-item list-group-item-action list-group-item-success">
+
+          <% for(var i=0;i<taskList.length;i++){
+              var colorItem;
+              var information = "Echéance: " + taskList[i].dateDue;
+             
+              if(taskList[i].dateCloture){
+                colorItem = 'list-group-item-success'
+                information = "Cloturé le " + taskList[i].dateCloture
+              } else if(!taskList[i].dateCloture && new Date() > taskList[i].dateDue){
+                colorItem = 'list-group-item-danger'
+                information = "Echeance dépassée : "+taskList[i].dateDue
+              }
+             %>
+          <a href="#" class="list-group-item list-group-item-action   <%=colorItem%>">
             <div class="d-flex w-100 justify-content-between">
-              <h5 class="mb-1"><%= taskList[i].name %></h5>
-              <small>Date de la demande: <%= taskList[i].dateInsert %></small>
+              <h5 class="mb-1"><%=taskList[i].category%></h5>
+              <small>Date de la demande: <%=taskList[i].dateInsert%></small>
             </div>
-            <p class="mb-1"><%= taskList[i].category %></p>
-            <small><i class="fas fa-check-square"></i> Cloturée le: <%= taskList[i].dateDue %></small>
+            <p class="mb-1"><%=taskList[i].name%></p>
+            <small><%=information%></small>
           </a>
-          <%  
-            }
-            %>
+          <%}%>
 
         </div>
 
