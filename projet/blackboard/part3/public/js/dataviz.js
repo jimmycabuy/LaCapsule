@@ -6,19 +6,25 @@ var male = bar.dataset.male;
 new Chart(bar, {
 
     type: "bar",
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: "Nombres d'utilisateurs par sexe"
+            },
+            legend: {
+                display: false
+            }
+        }
+    },
     data: {
         labels: ["Femmes", "Hommes"],
         datasets: [{
             data: [female, male],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
-            ],
-            borderWidth: 1
+                '#A2D2FF',
+                '#A3E4DB'
+            ]
         }]
     }
 });
@@ -29,23 +35,26 @@ var unread = donut.dataset.unread;
 var read = donut.dataset.read;
 
 new Chart(donut, {
-
     type: "doughnut",
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: "Nombres de messages lus et non-lus"
+            }
+        }
+    },
     data: {
         labels: ["Lu", "Non lu"],
         datasets: [{
             data: [read, unread],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
-            ],
-            borderWidth: 1
+                '#FFB2A6',
+                '#FF8AAE'
+            ]
         }]
     }
+
 });
 
 var pie = document.getElementById("chartpie");
@@ -56,19 +65,22 @@ var unshipped = pie.dataset.unshipped;
 new Chart(pie, {
 
     type: "pie",
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: "Commandes payées, expédiées et non expédiées"
+            }
+        }
+    },
     data: {
         labels: ["Expédié", "Non expédié"],
         datasets: [{
             data: [shipped, unshipped],
             backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)'
-            ],
-            borderWidth: 1
+                '#97DBAE',
+                '#C3E5AE'
+            ]
         }]
     }
 });
