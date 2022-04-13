@@ -115,13 +115,41 @@ router.get('/charts', async function (req, res, next) {
     }
   }
 
+
+  var aggr = orderModel.aggregate();
+
+  aggr.match({
+    status_payment: "validated"
+  });
+
+  aggr.group({
+    _id: {
+      year: {
+        $year: '$date_insert'
+      },
+      month: {
+        $month: '$date_insert'
+      }
+    },
+    CA: {
+      $sum: '$total'
+    }
+  });
+
+  aggr.sort({
+    _id: 1
+  });
+
+  var totalCAByMonth = await aggr.exec();
+
   res.render('charts', {
     nbFemmes,
     nbHommes,
     readMessage,
     unreadMessage,
     orderPaidAndShipped,
-    orderPaidAndNotShipped
+    orderPaidAndNotShipped,
+    totalCAByMonth
   });
 });
 

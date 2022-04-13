@@ -84,3 +84,49 @@ new Chart(pie, {
         }]
     }
 });
+
+var linechart = document.getElementById("linechart");
+
+var data = JSON.parse(linechart.dataset.ca);
+
+var userCountByMonthLabels = [];
+var userCountByMonthDataResults = [];
+
+for (var i = 0; i < data.length; i++) {
+    var date = new Date((data[i]._id.year), (data[i]._id.month - 1), 1)
+    var month = date.toLocaleString('default', {
+        month: 'long'
+    })
+
+    userCountByMonthLabels.push(month)
+
+    userCountByMonthDataResults.push(data[i].CA)
+}
+
+new Chart(linechart, {
+    type: "line",
+    options: {
+        plugins: {
+            title: {
+                display: true,
+                text: "Chiffres d'affaires par mois"
+            },
+            legend: {
+                display: false
+            }
+        }
+    },
+    data: {
+        labels: userCountByMonthLabels,
+        datasets: [{
+            data: userCountByMonthDataResults,
+            lineTension: 0.4,
+            backgroundColor: '#2ecc71',
+            pointBackgroundColor: '#F6D7A7',
+            fill: {
+                target: 'origin',
+                above: '#F6D7A7'
+            }
+        }]
+    }
+});
