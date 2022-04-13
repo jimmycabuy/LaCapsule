@@ -75,10 +75,22 @@ router.get('/order-page', async function (req, res, next) {
 });
 
 /* GET chart page. */
-router.get('/charts', function (req, res, next) {
-  res.render('charts');
+router.get('/charts', async function (req, res, next) {
+  var userList = await userModel.find();
+
+  var nbHommes = 0;
+  var nbFemmes = 0;
+
+  for (var i = 0; i < userList.length; i++) {
+    if (userList[i].gender == "male") {
+      nbHommes += 1;
+    } else if (userList[i].gender == "female") {
+      nbFemmes += 1;
+    }
+  }
+  res.render('charts', {
+    userList
+  });
 });
-
-
 
 module.exports = router;
