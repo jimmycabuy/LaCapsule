@@ -115,7 +115,6 @@ router.get('/charts', async function (req, res, next) {
     }
   }
 
-
   var aggr = orderModel.aggregate();
 
   aggr.match({
