@@ -109,7 +109,7 @@ new Chart(linechart, {
         plugins: {
             title: {
                 display: true,
-                text: "Chiffres d'affaires par mois"
+                text: "Chiffre d'affaires par mois"
             },
             legend: {
                 display: false
