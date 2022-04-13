@@ -1,9 +1,9 @@
-var ctx = document.getElementById("myChart");
+var bar = document.getElementById("myChart");
 
-var female = ctx.dataset.female;
-var male = ctx.dataset.male;
+var female = bar.dataset.female;
+var male = bar.dataset.male;
 
-new Chart(ctx, {
+new Chart(bar, {
 
     type: "bar",
     data: {
@@ -15,17 +15,34 @@ new Chart(ctx, {
     }
 });
 
+var donut = document.getElementById("doughnut");
 
-var ctx = document.getElementById("doughnut");
+var unread = donut.dataset.unread;
+var read = donut.dataset.read;
 
-new Chart(ctx, {
+new Chart(donut, {
 
     type: "doughnut",
     data: {
-        labels: ["Femmes", "Hommes"],
+        labels: ["Lu", "Non lu"],
         datasets: [{
-            data: [9, 9],
+            data: [read, unread],
+        }]
+    }
+});
 
+var pie = document.getElementById("chartpie");
+
+var shipped = pie.dataset.shipped;
+var unshipped = pie.dataset.unshipped;
+
+new Chart(pie, {
+
+    type: "pie",
+    data: {
+        labels: ["Expédié", "Non expédié"],
+        datasets: [{
+            data: [shipped, unshipped],
         }]
     }
 });

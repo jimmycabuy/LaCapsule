@@ -103,15 +103,25 @@ router.get('/charts', async function (req, res, next) {
     }
   }
 
-  console.log(readMessage);
-  console.log(unreadMessage);
+  var orderList = await orderModel.find();
+  var orderPaidAndShipped = 0;
+  var orderPaidAndNotShipped = 0;
+
+  for (var i = 0; i < orderList.length; i++) {
+    if (orderList[i].status_payment == "validated" && orderList[i].status_shipment == true) {
+      orderPaidAndShipped += 1;
+    } else if (orderList[i].status_payment == "validated" && orderList[i].status_shipment == false) {
+      orderPaidAndNotShipped += 1;
+    }
+  }
 
   res.render('charts', {
-    userList,
     nbFemmes,
     nbHommes,
     readMessage,
-    unreadMessage
+    unreadMessage,
+    orderPaidAndShipped,
+    orderPaidAndNotShipped
   });
 });
 
