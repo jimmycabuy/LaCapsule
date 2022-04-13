@@ -22,7 +22,7 @@ new Chart(bar, {
         datasets: [{
             data: [female, male],
             backgroundColor: [
-                '#A2D2FF',
+                '#BAABDA',
                 '#B8B5FF'
             ]
         }]
