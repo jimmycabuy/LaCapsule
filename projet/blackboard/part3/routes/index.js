@@ -88,8 +88,30 @@ router.get('/charts', async function (req, res, next) {
       nbFemmes += 1;
     }
   }
+
+  var user = await userModel.findById('5c52e4efaa4beef85aad5e52');
+  var messageList = user.messages;
+
+  var readMessage = 0;
+  var unreadMessage = 0;
+
+  for (var i = 0; i < messageList.length; i++) {
+    if (messageList[i].read == true) {
+      readMessage += 1;
+    } else if (messageList[i].read == false) {
+      unreadMessage += 1;
+    }
+  }
+
+  console.log(readMessage);
+  console.log(unreadMessage);
+
   res.render('charts', {
-    userList
+    userList,
+    nbFemmes,
+    nbHommes,
+    readMessage,
+    unreadMessage
   });
 });
 
