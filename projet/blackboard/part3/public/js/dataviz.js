@@ -114,6 +114,11 @@ new Chart(linechart, {
             legend: {
                 display: false
             }
+        },
+        scales: {
+            y: {
+                beginAtZero: true
+            }
         }
     },
     data: {
