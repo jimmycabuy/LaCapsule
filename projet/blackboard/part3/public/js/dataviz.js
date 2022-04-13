@@ -121,7 +121,7 @@ new Chart(linechart, {
         datasets: [{
             data: userCountByMonthDataResults,
             lineTension: 0.4,
-            backgroundColor: '#2ecc71',
+            backgroundColor: '#F6D7A7',
             pointBackgroundColor: '#F6D7A7',
             fill: {
                 target: 'origin',
