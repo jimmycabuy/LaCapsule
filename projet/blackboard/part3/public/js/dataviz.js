@@ -1,4 +1,4 @@
-var bar = document.getElementById("myChart");
+var bar = document.getElementById("chartBar");
 
 var female = bar.dataset.female;
 var male = bar.dataset.male;
@@ -10,7 +10,15 @@ new Chart(bar, {
         labels: ["Femmes", "Hommes"],
         datasets: [{
             data: [female, male],
-
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
         }]
     }
 });
@@ -27,6 +35,15 @@ new Chart(donut, {
         labels: ["Lu", "Non lu"],
         datasets: [{
             data: [read, unread],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
         }]
     }
 });
@@ -43,6 +60,15 @@ new Chart(pie, {
         labels: ["Expédié", "Non expédié"],
         datasets: [{
             data: [shipped, unshipped],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)'
+            ],
+            borderWidth: 1
         }]
     }
 });
