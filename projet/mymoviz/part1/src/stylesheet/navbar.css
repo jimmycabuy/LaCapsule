@@ -1,0 +1,12 @@
+.title{
+    color: white;
+}
+
+.title:hover{
+    color: rgb(176, 176, 176);
+}
+
+.nav{
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
