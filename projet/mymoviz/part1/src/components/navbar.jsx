@@ -10,13 +10,13 @@ import {
   DropdownItem,
   DropdownToggle,
 } from "reactstrap";
-import logo from "../images/logo.png";
+// import logo from "../images/logo.png";
 
 function Navbar() {
   return (
     <Nav className="nav">
       <NavItem>
-        <img src={logo} alt="logo" />
+        <img src="../images/logo.png" alt="logo" />
       </NavItem>
       <NavItem>
         <NavLink className="title" href="#">

@@ -28,8 +28,11 @@ function Movie(props) {
               width="100%"
             />
             <CardBody>
+              <CardText>
+              <h5 className="movie_title">{props.movieName}</h5>
+              </CardText>
               <CardText className="card_text">
-                  <p>Like</p>
+                  <p>Favoris</p>
                   <p className="heart"><FontAwesomeIcon icon={faHeart} /></p>
               </CardText>
               <CardText className="card_text">
@@ -49,8 +52,8 @@ function Movie(props) {
                   <p>({props.globalCountRating})</p>
                   <p>
                     <ButtonGroup>
-                        <Button>-</Button>
-                        <Button>+</Button>
+                        <Button color="secondary">-</Button>
+                        <Button color="secondary">+</Button>
                     </ButtonGroup></p>
               </CardText>
               <CardText className="card_text">
@@ -62,8 +65,7 @@ function Movie(props) {
                   <p className="star"><FontAwesomeIcon icon={faStar}/></p>
                   <p>({props.globalRating})</p>
               </CardText>
-              <CardText>{props.movieName}</CardText>
-              <CardText>{props.movieDesc}</CardText>
+              <CardText> <p className="synopsis">Synopsis:</p>{props.movieDesc}</CardText>
             </CardBody>
           </Card>
       </CardGroup>
