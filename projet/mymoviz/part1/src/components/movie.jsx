@@ -18,8 +18,7 @@ import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function Movie(props) {
   return (
-
-      <CardGroup className="card_movie col-xs-12 col-lg-6 col-xl-4">
+      <CardGroup className="card_movie col-12 col-lg-6 col-xl-4">
           <Card>
             <CardImg
               alt={props.movieName}
@@ -69,8 +68,6 @@ function Movie(props) {
             </CardBody>
           </Card>
       </CardGroup>
-
-
   );
 }
 
