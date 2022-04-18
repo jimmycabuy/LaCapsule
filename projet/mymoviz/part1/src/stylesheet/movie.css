@@ -14,7 +14,7 @@ body {
 
 .heart:hover {
     cursor: pointer;
-    color: red;
+    color: #FD5D5D;
 }
 
 .star:hover {
