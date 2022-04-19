@@ -86,9 +86,9 @@ function Movie(props) {
   var starMoyenne = [];
   for(var j = 0; j < 10 ; j++){
     if(j < moyenneArrondi){
-      starMoyenne.push(<p className="star" ><FontAwesomeIcon style={{color: "#FFD36E"}} icon={faStar}/></p>)
+      starMoyenne.push(<p><FontAwesomeIcon style={{color: "#FFD36E"}} icon={faStar}/></p>)
     } else{
-      starMoyenne.push(<p className="star"><FontAwesomeIcon icon={faStar}/></p>)
+      starMoyenne.push(<p><FontAwesomeIcon icon={faStar}/></p>)
     }
   }
   
