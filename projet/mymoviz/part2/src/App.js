@@ -52,7 +52,7 @@ function App() {
         "De nos jours à Mexico. Dani Ramos, 21 ans, travaille sur une chaîne de montage dans une usine automobile.",
       img: "../images/terminator.jpg",
       note: 6.1,
-      vote: 1,
+      vote: 2,
     },
   ];
   var moviesList = [];

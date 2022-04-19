@@ -19,7 +19,7 @@ function Movie(props) {
   const [likeMovie, setLikeMovie] = useState(false);
   const [watchMovie, setWatchMovie] = useState(false);
   const [countWatchMovie, setCountWatchMovie] = useState(0);
-  const [myRatingMovie, setMyRatingMovie] = useState(0);
+  let   [myRatingMovie, setMyRatingMovie] = useState(0);
 
   var heartClick = () => {
     if(likeMovie === true){
@@ -44,14 +44,19 @@ function Movie(props) {
     if(myRatingMovie > 0){
     setMyRatingMovie(myRatingMovie-1);
   }
-}
+  }
+
+  let handleStarClick = (counter) => {
+    setMyRatingMovie(myRatingMovie = counter+1);
+  }
 
   var starAvis = [];
   for(var i = 0 ; i < 10 ; i++){
+    let counter = i;
     if(i < myRatingMovie){
-      starAvis.push(<p className="star" ><FontAwesomeIcon style={{color: "#FFD36E"}} icon={faStar}/></p>)
+      starAvis.push(<p className="star"><FontAwesomeIcon onClick={ () => handleStarClick(counter) } style={{color: "#FFD36E"}} icon={faStar}/></p>)
     } else{
-      starAvis.push(<p className="star"><FontAwesomeIcon icon={faStar}/></p>)
+      starAvis.push(<p className="star"><FontAwesomeIcon onClick={ () => handleStarClick(counter) } icon={faStar}/></p>)
     }
   }
 
@@ -76,7 +81,7 @@ function Movie(props) {
     moyenneFinale = ((globalRating2 * globalCountRating2 ) + myRatingMovie)/ (globalCountRating2 + 1);
     globalCountRating2 +=1;
   }
-  var moyenneArrondi = Math.floor(moyenneFinale);
+  var moyenneArrondi = Math.round(moyenneFinale);
 
   var starMoyenne = [];
   for(var j = 0; j < 10 ; j++){
@@ -121,7 +126,7 @@ function Movie(props) {
               <CardText className="card_text">
                   <p>Moyenne</p>
                   {starMoyenne}
-                  <p>({globalCountRating2})</p>
+                  <p>({globalCountRating2} votes)</p>
               </CardText>
               <CardText> <p className="synopsis">Synopsis:</p>{props.movieDesc}</CardText>
             </CardBody>
