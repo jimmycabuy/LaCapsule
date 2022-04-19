@@ -6,9 +6,7 @@ import {
   CardImg,
   CardBody,
   CardText,
-  Button,
   Badge,
-  ButtonGroup,
   CardGroup,
 } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -21,6 +19,7 @@ function Movie(props) {
   const [likeMovie, setLikeMovie] = useState(false);
   const [watchMovie, setWatchMovie] = useState(false);
   const [countWatchMovie, setCountWatchMovie] = useState(0);
+  const [myRatingMovie, setMyRatingMovie] = useState(0);
 
   var heartClick = () => {
     if(likeMovie === true){
@@ -35,6 +34,27 @@ function Movie(props) {
       setCountWatchMovie(countWatchMovie+1);
   }
 
+  var starClickPlus = () => {
+    if(myRatingMovie < 10){
+      setMyRatingMovie(myRatingMovie+1);
+    }
+  }
+
+  var starClickMoins = () => {
+    if(myRatingMovie > 0){
+    setMyRatingMovie(myRatingMovie-1);
+  }
+}
+
+  var starAvis = [];
+  for(var i = 0 ; i < 10 ; i++){
+    if(i < myRatingMovie){
+      starAvis.push(<p className="star" ><FontAwesomeIcon style={{color: "#FFD36E"}} icon={faStar}/></p>)
+    } else{
+      starAvis.push(<p className="star"><FontAwesomeIcon icon={faStar}/></p>)
+    }
+  }
+
   var heartColor ;
   var cameraColor ;
 
@@ -46,6 +66,27 @@ function Movie(props) {
     cameraColor = { color : "#FD5D5D" };
   }
 
+  var globalRating2 = props.globalRating
+  var globalCountRating2 = props.globalCountRating
+
+  var moyenneFinale = 0;
+  if(myRatingMovie === 0){
+    moyenneFinale = globalRating2;
+  } else{
+    moyenneFinale = ((globalRating2 * globalCountRating2 ) + myRatingMovie)/ (globalCountRating2 + 1);
+    globalCountRating2 +=1;
+  }
+  var moyenneArrondi = Math.floor(moyenneFinale);
+
+  var starMoyenne = [];
+  for(var j = 0; j < 10 ; j++){
+    if(j < moyenneArrondi){
+      starMoyenne.push(<p className="star" ><FontAwesomeIcon style={{color: "#FFD36E"}} icon={faStar}/></p>)
+    } else{
+      starMoyenne.push(<p className="star"><FontAwesomeIcon icon={faStar}/></p>)
+    }
+  }
+  
   return (
       <CardGroup className="card_movie col-12 col-lg-6 col-xl-4">
           <Card>
@@ -70,36 +111,17 @@ function Movie(props) {
               </CardText>
               <CardText className="card_text">
                   <p>Avis</p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p>({props.globalCountRating}/10)</p>
+                  {starAvis}
+                  {/* <p>(<span>{ myRatingMovie }</span>)</p> */}
                   <p>
-                    <ButtonGroup>
-                        <Button color="secondary">-</Button>
-                        <Button color="secondary">+</Button>
-                    </ButtonGroup></p>
+                    <Badge onClick={ () => starClickMoins() } color="secondary" className="badge_avis">-</Badge>
+                    <Badge onClick={ () => starClickPlus() } color="secondary" className="badge_avis">+</Badge>
+                    </p>
               </CardText>
               <CardText className="card_text">
                   <p>Moyenne</p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p className="star"><FontAwesomeIcon icon={faStar}/></p>
-                  <p>({props.globalRating}/10)</p>
+                  {starMoyenne}
+                  <p>({globalCountRating2})</p>
               </CardText>
               <CardText> <p className="synopsis">Synopsis:</p>{props.movieDesc}</CardText>
             </CardBody>

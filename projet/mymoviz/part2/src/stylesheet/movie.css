@@ -27,6 +27,14 @@ body {
     color: #FD5D5D;
 }
 
+.badge_avis:hover{
+    cursor: pointer;
+}
+
+.badge_avis{
+    margin-right: 1px;
+}
+
 .movie_title {
     margin-bottom: 30px;
 }
