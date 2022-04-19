@@ -1,5 +1,5 @@
 import "../stylesheet/movie.css";
-import React from "react";
+import React, {useState} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Card,
@@ -17,6 +17,35 @@ import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function Movie(props) {
+
+  const [likeMovie, setLikeMovie] = useState(false);
+  const [watchMovie, setWatchMovie] = useState(false);
+  const [countWatchMovie, setCountWatchMovie] = useState(0);
+
+  var heartClick = () => {
+    if(likeMovie === true){
+      setLikeMovie(false);
+    } else{
+      setLikeMovie(true);
+    }
+  }
+
+  var cameraClick = () => {
+      setWatchMovie(true);
+      setCountWatchMovie(countWatchMovie+1);
+  }
+
+  var heartColor ;
+  var cameraColor ;
+
+  if(likeMovie){
+    heartColor = { color : "#FD5D5D" };
+  } 
+  
+  if(watchMovie){
+    cameraColor = { color : "#FD5D5D" };
+  }
+
   return (
       <CardGroup className="card_movie col-12 col-lg-6 col-xl-4">
           <Card>
@@ -32,12 +61,12 @@ function Movie(props) {
               </CardText>
               <CardText className="card_text">
                   <p>Favoris</p>
-                  <p className="heart"><FontAwesomeIcon icon={faHeart} /></p>
+                  <p onClick={ () => heartClick() } style={heartColor} className="heart" ><FontAwesomeIcon icon={faHeart} /></p>
               </CardText>
               <CardText className="card_text">
                 <p>Nombres de vues</p>
-                <p><FontAwesomeIcon icon={faVideo} /></p>
-                <p><Badge color="secondary">{props.movieView}</Badge></p>
+                <p onClick={ () => cameraClick() } style={cameraColor} className="camera" ><FontAwesomeIcon icon={faVideo} /></p>
+                <p><Badge color="secondary"><span>{ countWatchMovie }</span></Badge></p>
               </CardText>
               <CardText className="card_text">
                   <p>Avis</p>

@@ -22,6 +22,11 @@ body {
     color: #FFD36E;
 }
 
+.camera:hover{
+    cursor: pointer;
+    color: #FD5D5D;
+}
+
 .movie_title {
     margin-bottom: 30px;
 }

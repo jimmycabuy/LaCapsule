@@ -13,7 +13,6 @@ function App() {
       img: "../images/starwars.jpg",
       note: 6.7,
       vote: 5,
-      vue: 2,
     },
     {
       name: "Maléfique : Le pouvoir du mal",
@@ -22,7 +21,6 @@ function App() {
       img: "../images/maleficent.jpg",
       note: 8.2,
       vote: 3,
-      vue: 4,
     },
     {
       name: "Jumanji: The Next Level",
@@ -31,7 +29,6 @@ function App() {
       img: "../images/jumanji.jpg",
       note: 4,
       vote: 5,
-      vue: 1,
     },
     {
       name: "Once Upon a Time... in Hollywood",
@@ -40,7 +37,6 @@ function App() {
       img: "../images/once_upon.jpg",
       note: 6,
       vote: 7,
-      vue: 10,
     },
     {
       name: "La Reine des neiges 2",
@@ -49,7 +45,6 @@ function App() {
       img: "../images/frozen.jpg",
       note: 4.6,
       vote: 3,
-      vue: 7,
     },
     {
       name: "Terminator: Dark Fate",
@@ -58,7 +53,6 @@ function App() {
       img: "../images/terminator.jpg",
       note: 6.1,
       vote: 1,
-      vue: 11,
     },
   ];
   var moviesList = [];
@@ -70,7 +64,6 @@ function App() {
         movieImg={moviesData[i].img}
         globalRating={moviesData[i].note}
         globalCountRating={moviesData[i].vote}
-        movieView={moviesData[i].vue}
       />
     );
   }
