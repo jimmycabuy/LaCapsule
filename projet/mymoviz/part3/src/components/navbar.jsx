@@ -23,16 +23,11 @@ function Navbar(props) {
     }
   };
 
-  
-  const renderWishlist = function(wishlist){
-    // let movieCard = [];
-    // console.log(wishlist);
-    // for(var i = 0 ; i < wishlist.length; i++){
-    //   movieCard.push(<DropdownItem>{wishlist[i]}</DropdownItem>)
-    // }
-    const movieCard = wishlist.map(movie => {return <DropdownItem>{movie}</DropdownItem>})
-    return movieCard;
-  }
+  const movieCard = props.wishfilms.map((movie) => {
+    return (
+  <DropdownItem ><img width='25%' src={movie.img} alt="salut"/> {movie.name}</DropdownItem>
+  )
+})
 
   return (
     <Nav className="nav">
@@ -44,23 +39,13 @@ function Navbar(props) {
           Last Releases
         </NavLink>
       </NavItem>
-      <NavItem onClick={() => buttonClick()}>
+      <NavItem onClick={() => buttonClick()} className="dropdowsize">
         <Dropdown isOpen={buttonOpen}>
           <DropdownToggle caret>{props.countfilms} films</DropdownToggle>
           <DropdownMenu>
-            {renderWishlist(props.wishfilms)}
+            {movieCard}
           </DropdownMenu>
         </Dropdown>
-
-
-
-      {/* <Button onClick={() => buttonClick()}>Bonjour</Button>
-        <Popover isOpen={buttonOpen} toggle={this.toggle}>
-          <PopoverHeader>Popover Title</PopoverHeader>
-          <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
-        </Popover> */}
-
-
       </NavItem>
     </Nav>
   );

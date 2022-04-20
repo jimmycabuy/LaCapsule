@@ -24,10 +24,10 @@ function Movie(props) {
   var heartClick = () => {
     if(likeMovie === true){
       setLikeMovie(false);
-      props.handleClickRemoveMovieParent(props.movieName);
+      props.handleClickRemoveMovieParent(props.movieName, props.movieImg);
     } else{
       setLikeMovie(true);
-      props.handleClickAddMovieParent(props.movieName);
+      props.handleClickAddMovieParent(props.movieName, props.movieImg);
     }
   }
 

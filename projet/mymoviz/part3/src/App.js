@@ -4,24 +4,21 @@ import "./App.css";
 import Navbar from "./components/navbar.jsx";
 import Movie from "./components/movie.jsx";
 
-import {
-  DropdownItem,
-} from "reactstrap";
-
 function App() {
   
   const [moviesCount, setMoviesCount] = useState(0);
   const [moviesWishList, setMoviesWishList] = useState([]);
 
-  var handleClickAddMovie = (movieName) => {
+  var handleClickAddMovie = (movieName, image) => {
     setMoviesCount(moviesCount+1);
-    setMoviesWishList([...moviesWishList, movieName])
+    setMoviesWishList([...moviesWishList, {name: movieName, img: image}])
   };
 
   var handleClickRemoveMovie = (movieName) => {
     setMoviesCount(moviesCount-1);
-    setMoviesWishList( moviesWishList.filter((e) => (e !== movieName)));
+    setMoviesWishList( moviesWishList.filter((e) => (e.name !== movieName)));
   };
+
 
   console.log(moviesWishList);
 

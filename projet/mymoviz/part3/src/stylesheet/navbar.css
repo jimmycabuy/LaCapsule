@@ -12,7 +12,6 @@
     align-items: center;
 }
 
-.wishList{
-    display: flex;
-    flex-direction: column;
+.dropdowsize{
+    width: 60%;
 }
