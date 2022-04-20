@@ -19,9 +19,6 @@ function App() {
     setMoviesWishList( moviesWishList.filter((e) => (e.name !== movieName)));
   };
 
-
-  console.log(moviesWishList);
-
   var moviesData = [
     {
       name: "Star Wars : L'ascension de Skywalker",

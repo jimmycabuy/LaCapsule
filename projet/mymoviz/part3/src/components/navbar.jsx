@@ -23,9 +23,13 @@ function Navbar(props) {
     }
   };
 
+  // var wishListClick = () => {
+  //   console.log("click detecté");
+  // }
+
   const movieCard = props.wishfilms.map((movie) => {
     return (
-  <DropdownItem ><img width='25%' src={movie.img} alt="salut"/> {movie.name}</DropdownItem>
+  <DropdownItem /*onClick={ () => wishListClick() }*/ ><img width='25%' src={movie.img} alt={movie.name}/> {movie.name}</DropdownItem>
   )
 })
 
@@ -39,9 +43,9 @@ function Navbar(props) {
           Last Releases
         </NavLink>
       </NavItem>
-      <NavItem onClick={() => buttonClick()} className="dropdowsize">
-        <Dropdown isOpen={buttonOpen}>
-          <DropdownToggle caret>{props.countfilms} films</DropdownToggle>
+      <NavItem className="dropdowsize">
+        <Dropdown isOpen={buttonOpen} caret onMouseEnter={() => buttonClick(true)} onMouseLeave={() => buttonClick(false)}>
+          <DropdownToggle>{props.countfilms} film(s) favoris</DropdownToggle>
           <DropdownMenu>
             {movieCard}
           </DropdownMenu>
