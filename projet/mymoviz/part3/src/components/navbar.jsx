@@ -12,7 +12,6 @@ import {
 } from "reactstrap";
 
 function Navbar(props) {
-
   const [buttonOpen, setButtonOpen] = useState(false);
 
   var buttonClick = () => {
@@ -29,9 +28,11 @@ function Navbar(props) {
 
   const movieCard = props.wishfilms.map((movie) => {
     return (
-  <DropdownItem /*onClick={ () => wishListClick() }*/ ><img width='25%' src={movie.img} alt={movie.name}/> {movie.name}</DropdownItem>
-  )
-})
+      <DropdownItem /*onClick={ () => wishListClick() }*/>
+        <img width="25%" src={movie.img} alt={movie.name} /> {movie.name}
+      </DropdownItem>
+    );
+  });
 
   return (
     <Nav className="nav">
@@ -44,11 +45,14 @@ function Navbar(props) {
         </NavLink>
       </NavItem>
       <NavItem className="dropdowsize">
-        <Dropdown isOpen={buttonOpen} caret onMouseEnter={() => buttonClick(true)} onMouseLeave={() => buttonClick(false)}>
+        <Dropdown
+          isOpen={buttonOpen}
+          caret
+          onMouseEnter={() => buttonClick(true)}
+          onMouseLeave={() => buttonClick(false)}
+        >
           <DropdownToggle>{props.countfilms} film(s) favoris</DropdownToggle>
-          <DropdownMenu>
-            {movieCard}
-          </DropdownMenu>
+          <DropdownMenu>{movieCard}</DropdownMenu>
         </Dropdown>
       </NavItem>
     </Nav>

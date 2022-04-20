@@ -1,22 +1,21 @@
-import React, {useState} from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 import Navbar from "./components/navbar.jsx";
 import Movie from "./components/movie.jsx";
 
 function App() {
-  
   const [moviesCount, setMoviesCount] = useState(0);
   const [moviesWishList, setMoviesWishList] = useState([]);
 
   var handleClickAddMovie = (movieName, image) => {
-    setMoviesCount(moviesCount+1);
-    setMoviesWishList([...moviesWishList, {name: movieName, img: image}])
+    setMoviesCount(moviesCount + 1);
+    setMoviesWishList([...moviesWishList, { name: movieName, img: image }]);
   };
 
   var handleClickRemoveMovie = (movieName) => {
-    setMoviesCount(moviesCount-1);
-    setMoviesWishList( moviesWishList.filter((e) => (e.name !== movieName)));
+    setMoviesCount(moviesCount - 1);
+    setMoviesWishList(moviesWishList.filter((e) => e.name !== movieName));
   };
 
   var moviesData = [
@@ -67,26 +66,23 @@ function App() {
   for (var i = 0; i < moviesData.length; i++) {
     moviesList.push(
       <Movie
-      movieName={moviesData[i].name}
-      movieDesc={moviesData[i].desc}
-      movieImg={moviesData[i].img}
-      globalRating={moviesData[i].note}
-      globalCountRating={moviesData[i].vote}
-      handleClickAddMovieParent={handleClickAddMovie}
-      handleClickRemoveMovieParent={handleClickRemoveMovie}
+        movieName={moviesData[i].name}
+        movieDesc={moviesData[i].desc}
+        movieImg={moviesData[i].img}
+        globalRating={moviesData[i].note}
+        globalCountRating={moviesData[i].vote}
+        handleClickAddMovieParent={handleClickAddMovie}
+        handleClickRemoveMovieParent={handleClickRemoveMovie}
       />
-      );
-    }
-    return (
-      <div>
+    );
+  }
+  return (
+    <div>
       <main>
         <div className="container">
           <div className="row">
             <div>
-              <Navbar
-              countfilms = {moviesCount}
-              wishfilms = {moviesWishList}
-              />
+              <Navbar countfilms={moviesCount} wishfilms={moviesWishList} />
             </div>
             {moviesList}
           </div>

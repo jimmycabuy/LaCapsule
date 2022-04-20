@@ -22,16 +22,16 @@ body {
     color: #FFD36E;
 }
 
-.camera:hover{
+.camera:hover {
     cursor: pointer;
     color: #FD5D5D;
 }
 
-.badge_avis:hover{
+.badge_avis:hover {
     cursor: pointer;
 }
 
-.badge_avis{
+.badge_avis {
     margin-right: 1px;
 }
 

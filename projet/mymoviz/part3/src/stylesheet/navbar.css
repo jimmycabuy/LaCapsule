@@ -1,17 +1,17 @@
-.title{
+.title {
     color: white;
 }
 
-.title:hover{
+.title:hover {
     color: rgb(176, 176, 176);
 }
 
-.nav{
+.nav {
     padding-top: 20px;
     padding-bottom: 20px;
     align-items: center;
 }
 
-.dropdowsize{
+.dropdowsize {
     width: 45%;
 }
