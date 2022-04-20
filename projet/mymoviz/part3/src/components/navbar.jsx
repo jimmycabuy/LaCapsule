@@ -1,18 +1,39 @@
 import "../stylesheet/navbar.css";
-import React from "react";
+import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import {
   Nav,
   NavItem,
   NavLink,
-  ButtonDropdown,
   DropdownMenu,
-  DropdownItem,
   DropdownToggle,
+  Dropdown,
+  DropdownItem,
 } from "reactstrap";
-// import logo from "../images/logo.png";
 
-function Navbar() {
+function Navbar(props) {
+
+  const [buttonOpen, setButtonOpen] = useState(false);
+
+  var buttonClick = () => {
+    if (buttonOpen === true) {
+      setButtonOpen(false);
+    } else {
+      setButtonOpen(true);
+    }
+  };
+
+  
+  const renderWishlist = function(wishlist){
+    // let movieCard = [];
+    // console.log(wishlist);
+    // for(var i = 0 ; i < wishlist.length; i++){
+    //   movieCard.push(<DropdownItem>{wishlist[i]}</DropdownItem>)
+    // }
+    const movieCard = wishlist.map(movie => {return <DropdownItem>{movie}</DropdownItem>})
+    return movieCard;
+  }
+
   return (
     <Nav className="nav">
       <NavItem>
@@ -23,17 +44,23 @@ function Navbar() {
           Last Releases
         </NavLink>
       </NavItem>
-      <NavItem>
-        <ButtonDropdown toggle={function noRefCheck() {}}>
-          <DropdownToggle caret>11 films</DropdownToggle>
+      <NavItem onClick={() => buttonClick()}>
+        <Dropdown isOpen={buttonOpen}>
+          <DropdownToggle caret>{props.countfilms} films</DropdownToggle>
           <DropdownMenu>
-            <DropdownItem header>Header</DropdownItem>
-            <DropdownItem disabled>Action</DropdownItem>
-            <DropdownItem>Another Action</DropdownItem>
-            <DropdownItem divider />
-            <DropdownItem>Another Action</DropdownItem>
+            {renderWishlist(props.wishfilms)}
           </DropdownMenu>
-        </ButtonDropdown>
+        </Dropdown>
+
+
+
+      {/* <Button onClick={() => buttonClick()}>Bonjour</Button>
+        <Popover isOpen={buttonOpen} toggle={this.toggle}>
+          <PopoverHeader>Popover Title</PopoverHeader>
+          <PopoverBody>Sed posuere consectetur est at lobortis. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.</PopoverBody>
+        </Popover> */}
+
+
       </NavItem>
     </Nav>
   );

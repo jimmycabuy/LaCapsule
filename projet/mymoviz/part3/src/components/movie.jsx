@@ -24,8 +24,10 @@ function Movie(props) {
   var heartClick = () => {
     if(likeMovie === true){
       setLikeMovie(false);
+      props.handleClickRemoveMovieParent(props.movieName);
     } else{
       setLikeMovie(true);
+      props.handleClickAddMovieParent(props.movieName);
     }
   }
 
@@ -91,6 +93,10 @@ function Movie(props) {
       starMoyenne.push(<p><FontAwesomeIcon icon={faStar}/></p>)
     }
   }
+
+  // var handleClickAddMovie = () => {
+  //   props.handleClickAddMovieParent();
+  // }
   
   return (
       <CardGroup className="card_movie col-12 col-lg-6 col-xl-4">
@@ -107,11 +113,11 @@ function Movie(props) {
               </CardText>
               <CardText className="card_text">
                   <p>Favoris</p>
-                  <p onClick={ () => heartClick() } style={heartColor} className="heart" ><FontAwesomeIcon icon={faHeart} /></p>
+                  <p onClick={ () => heartClick() } style={heartColor} className="heart"><FontAwesomeIcon icon={faHeart} /></p>
               </CardText>
               <CardText className="card_text">
                 <p>Nombres de vues</p>
-                <p onClick={ () => cameraClick() } style={cameraColor} className="camera" ><FontAwesomeIcon icon={faVideo} /></p>
+                <p onClick={ () => cameraClick() } style={cameraColor} className="camera"><FontAwesomeIcon icon={faVideo} /></p>
                 <p><Badge color="secondary"><span>{ countWatchMovie }</span></Badge></p>
               </CardText>
               <CardText className="card_text">
