@@ -10,8 +10,7 @@ function App() {
     async function loadMovie() {
       var rawResponse = await fetch("/new-movies");
       var response = await rawResponse.json();
-      setMovieList(response.response);
-      // console.log(movieList);
+      setMovieList(response);
     }
     loadMovie();
   }, []);
@@ -29,81 +28,21 @@ function App() {
     setMoviesWishList(moviesWishList.filter((e) => e.name !== movieName));
   };
 
-  // var moviesData = [
-  //   {
-  //     name: "Star Wars : L'ascension de Skywalker",
-  //     desc: "Un an a passé depuis que Kylo Ren a tué Snoke, le Leader suprême et pris sa place. Bien que largement décimée, la Résistance est prête à renaître de ses cendres. Rey, Poe, Leia et leurs alliés se préparent à reprendre le combat. Mais ils vont devoir faire face à un vieil ennemi : l'empereur Palpatine.",
-  //     img: "../images/starwars.jpg",
-  //     note: 6.7,
-  //     vote: 5,
-  //   },
-  //   {
-  //     name: "Maléfique : Le pouvoir du mal",
-  //     desc: "La relation complexe d'Aurore et de Maléfique continue d'être explorée alors qu'elles doivent faire face à une nouvelle menace.",
-  //     img: "../images/maleficent.jpg",
-  //     note: 8.2,
-  //     vote: 3,
-  //   },
-  //   {
-  //     name: "Jumanji: The Next Level",
-  //     desc: "Lorsque Spencer retourne dans le monde fantastique de Jumanji, ses amis Martha, Fridge et Bethany y retournent aussi pour le sauver mais le jeu est maintenant brisé. Tout ce qu'ils pensent savoir sur Jumanji est sur le point de changer car ils découvrent bientôt qu'il y a plus d'obstacles et plus de danger à surmonter.",
-  //     img: "../images/jumanji.jpg",
-  //     note: 4,
-  //     vote: 5,
-  //   },
-  //   {
-  //     name: "Once Upon a Time... in Hollywood",
-  //     desc: "Rick Dalton, un acteur de télévision qui a déjà vécu de meilleures années, et son cascadeur de longue date Cliff Booth s'efforcent d'atteindre la gloire et le succès dans l'industrie cinématographique au cours de l'âge d'or d'Hollywood en 1969.",
-  //     img: "../images/once_upon.jpg",
-  //     note: 6,
-  //     vote: 7,
-  //   },
-  //   {
-  //     name: "La Reine des neiges 2",
-  //     desc: "Elsa se demande pourquoi elle est née avec des pouvoirs magiques. La réponse menace son royaume. Avec Anna, Kristoff, Olaf et Sven, elle entreprendra un voyage dangereux, mais remarquable où elle ne pourra que souhaiter que ses pouvoirs soient assez puissants.",
-  //     img: "../images/frozen.jpg",
-  //     note: 4.6,
-  //     vote: 3,
-  //   },
-  //   {
-  //     name: "Terminator: Dark Fate",
-  //     desc: "De nos jours à Mexico. Dani Ramos, 21 ans, travaille sur une chaîne de montage dans une usine automobile.",
-  //     img: "../images/terminator.jpg",
-  //     note: 6.1,
-  //     vote: 2,
-  //   },
-  // ];
-  const createMovieCards = function(movieList){
-
     var moviesList = [];
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < 20; i++) {
       console.log(movieList);
       moviesList.push(
         <Movie
-          movieName={movieList.results[i].original_title}
-          movieDesc={movieList.results[i].overview}
-          movieImg={"https://image.tmdb.org/t/p/w500" + movieList.results[i].backdrop_path}
-          globalRating={movieList.results[i].vote_average}
-          globalCountRating={movieList.results[i].vote_count}
+          movieName={movieList.response?.results[i].original_title}
+          movieDesc={movieList.response?.results[i].overview}
+          movieImg={"https://image.tmdb.org/t/p/w500" + movieList.response?.results[i].backdrop_path}
+          globalRating={movieList.response?.results[i].vote_average}
+          globalCountRating={movieList.response?.results[i].vote_count}
           handleClickAddMovieParent={handleClickAddMovie}
           handleClickRemoveMovieParent={handleClickRemoveMovie}
         />
       );
     }
-    return moviesList;
-  }
-
-  // var nouvelEssai = movieList.map((movie) => {
-  //   return ( <Movie
-  //     movieName={movie.original_title}
-  //     movieDesc={movie.overview}
-  //     movieImg={movie.original_title}
-  //     globalRating={movie.vote_average}
-  //     globalCountRating={movie.vote_count}
-  //     handleClickAddMovieParent={handleClickAddMovie}
-  //     handleClickRemoveMovieParent={handleClickRemoveMovie}
-  //   />)
-  // });
 
   return (
     <div>
@@ -113,7 +52,7 @@ function App() {
             <div>
               <Navbar countfilms={moviesCount} wishfilms={moviesWishList} />
             </div>
-            {createMovieCards(movieList)}
+            {moviesList}
           </div>
         </div>
       </main>

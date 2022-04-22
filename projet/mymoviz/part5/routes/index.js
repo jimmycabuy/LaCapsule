@@ -20,23 +20,25 @@ router.get("/new-movies", function (req, res, next) {
 
 /* Add a movie in the database */
 router.post("/wishlist-movie", async function (req, res, next) {
-  var requete = request(
-    "GET",
-    "https://api.themoviedb.org/3/movie/popular?api_key=a1829f8cf157c150da708df1a00818c7&language=fr"
-  );
-  var response = JSON.parse(requete.body);
+  // var requete = request(
+  //   "GET",
+  //   "https://api.themoviedb.org/3/movie/popular?api_key=a1829f8cf157c150da708df1a00818c7&language=fr"
+  // );
+  // var response = JSON.parse(requete.body);
 
-    for (var i = 0 ; i < 6 ; i++){
+    // for (var i = 0 ; i < 6 ; i++){
 
-      var newMovie = new movieModel({
-        name: response.results[i].original_title,
-        desc: response.results[i].overview,
-        img: "https://image.tmdb.org/t/p/w500" + response.results[i].backdrop_path,
-        note: response.results[i].vote_average,
-        vote: response.results[i].vote_count,
-      });
+    //   var newMovie = new movieModel({
+    //     name: response.results[i].original_title,
+    //     desc: response.results[i].overview,
+    //     img: "https://image.tmdb.org/t/p/w500" + response.results[i].backdrop_path,
+    //     note: response.results[i].vote_average,
+    //     vote: response.results[i].vote_count,
+    //   });
+
+    var newMovie = new movieModel(req.body)
       await newMovie.save();
-    }
+    // }
     res.json({ newMovie });
 });
 
