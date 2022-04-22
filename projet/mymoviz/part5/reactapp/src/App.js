@@ -58,6 +58,7 @@ function App() {
         globalCountRating={movieList.response?.results[i].vote_count}
         handleClickAddMovieParent={handleClickAddMovie}
         handleClickRemoveMovieParent={handleClickRemoveMovie}
+        likeMovie={moviesWishList.find(movie => movie.name === movieList.response?.results[i].original_title ) ? true : false}
       />
     );
   }

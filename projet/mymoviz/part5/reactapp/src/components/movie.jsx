@@ -15,17 +15,18 @@ import { faVideo } from "@fortawesome/free-solid-svg-icons";
 import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function Movie(props) {
-  const [likeMovie, setLikeMovie] = useState(false);
+  // const [likeMovie, setLikeMovie] = useState(false);
+
   const [watchMovie, setWatchMovie] = useState(false);
   const [countWatchMovie, setCountWatchMovie] = useState(0);
   let [myRatingMovie, setMyRatingMovie] = useState(0);
 
   var heartClick = () => {
-    if (likeMovie === true) {
-      setLikeMovie(false);
+    if (props.likeMovie === true) {
+      // setLikeMovie(false);
       props.handleClickRemoveMovieParent(props.movieName, props.movieImg);
     } else {
-      setLikeMovie(true);
+      // setLikeMovie(true);
       props.handleClickAddMovieParent(props.movieName, props.movieImg);
     }
   };
@@ -79,7 +80,7 @@ function Movie(props) {
   var heartColor;
   var cameraColor;
 
-  if (likeMovie) {
+  if (props.likeMovie) {
     heartColor = { color: "#FD5D5D" };
   }
 
