@@ -45,7 +45,7 @@ function App() {
   };
 
   var moviesList = [];
-  for (var i = 0; i < 20; i++) {
+  for (var i = 0; i < 12; i++) {
     moviesList.push(
       <Movie
         movieName={movieList.response?.results[i].original_title}
