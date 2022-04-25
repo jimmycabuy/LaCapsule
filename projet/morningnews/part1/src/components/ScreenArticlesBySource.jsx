@@ -1,7 +1,7 @@
 import React from "react";
 import "../App.css";
 import { Card, Icon } from "antd";
-import Nav from "../Nav";
+import Nav from "./Nav";
 
 const { Meta } = Card;
 
