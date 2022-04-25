@@ -1,6 +1,6 @@
 import React from 'react';
-import './App.css';
-import ScreenHome from './ScreenHome';
+import ScreenHome from "./components/ScreenHome.jsx";
+import "./App.css";
 
 function App() {
   return (
