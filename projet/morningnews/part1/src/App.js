@@ -12,7 +12,7 @@ function App() {
       <Switch>
         <Route exact path="/" from component={ScreenHome}/>
         <Route path="/screenmyarticles" from component={ScreenMyArticles}/>
-        <Route path="/screenarticlesbysource" from component={ScreenArticlesBySource}/>
+        <Route path="/screenarticlesbysource/:id" from component={ScreenArticlesBySource}/>
         <Route path="/screensource" from component={ScreenSource}/>
       </Switch>
     </Router>

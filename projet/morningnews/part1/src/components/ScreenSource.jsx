@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import "../App.css";
 import { List, Avatar } from "antd";
 import Nav from "./Nav";
+import { Link } from "react-router-dom";
 
 function ScreenSource() {
 
@@ -9,21 +10,17 @@ function ScreenSource() {
 
   useEffect(() => {
     async function loadSource() {
-      var rawResponse = await fetch("https://newsapi.org/v2/top-headlines/sources?apiKey=e1af60fe24304a10815b363c551f94ea&country=fr&language=fr");
+      var rawResponse = await fetch("https://newsapi.org/v2/top-headlines/sources?apiKey=77fb885ad79242c49d08b6de58756859&country=fr&language=fr");
       var response = await rawResponse.json();
-      // setSourceList(response);
 
       var sourcesFromAPI = response.sources.map((sourceAPI) => {
-        return { source: sourceAPI.name, description: sourceAPI.description };
+        return { source: sourceAPI.name, description: sourceAPI.description, id: sourceAPI.id };
       });
       setSourceList(sourcesFromAPI);
       console.log(sourcesFromAPI);
-
     }
     loadSource();
   }, []);
-  
-
 
   return (
     <div>
@@ -35,13 +32,13 @@ function ScreenSource() {
         <List
           itemLayout="horizontal"
           dataSource={sourceList}
-          renderItem={(item) => (
+          renderItem={(item, i) => (
             <List.Item>
               <List.Item.Meta
                 avatar={
                   <Avatar src='#' />
                 }
-                title={item.source}
+                title={<Link to={`/screenarticlesbysource/${item.id}`} key={i}>{item.source}</Link>}
                 description={item.description}
               />
             </List.Item>
