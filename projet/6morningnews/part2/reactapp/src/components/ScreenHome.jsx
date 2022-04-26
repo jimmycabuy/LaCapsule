@@ -4,7 +4,7 @@ import "../App.css";
 import { Input, Button } from "antd";
 
 function ScreenHome() {
-  // signUp useStateeeeeeee
+  // signUp useState
   const [signUpUsername, setSignUpUsername] = useState("");
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSgnUpPassword] = useState("");
