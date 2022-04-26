@@ -61,7 +61,7 @@ function ScreenHome() {
         <Input.Password style={{ marginBottom: "10px" }} className="Login-input" placeholder="password" onChange={(e) => setSgnInPassword(e.target.value)}
           value={signInPassword} />
 
-        <Button style={{ width: "80px" }} onClick={() => handleSubmitSignIn()} >
+        <Button onClick={() => handleSubmitSignIn()} >
           Sign-in
         </Button>
       </div>
@@ -81,7 +81,7 @@ function ScreenHome() {
         <Input.Password style={{ marginBottom: "10px" }} className="Login-input" placeholder="password" onChange={(e) => setSgnUpPassword(e.target.value)}
           value={signUpPassword} />
         
-        <Button style={{ width: "80px" }} onClick={() => handleSubmitSignUp()}>
+        <Button onClick={() => handleSubmitSignUp()}>
           Sign-up
         </Button>
         

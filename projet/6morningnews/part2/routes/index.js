@@ -13,10 +13,10 @@ router.post("/sign-up", async function (req, res, next) {
   const data = await userModel.findOne({email : req.body.email })
   
   if(data != null){
-    error.push("Utilisateur déjà inscrit")
+    error.push("L'utilisateur est déjà inscrit")
   }
   if(req.body.username === "" || req.body.email === "" || req.body.password === ""){
-    error.push("Veuillez remplir toutes les informations")
+    error.push("Veuillez remplir tous les champs")
   }
 
   if (error.length == 0){
@@ -40,9 +40,11 @@ router.post("/sign-in", async function (req, res, next) {
   });
 
   if(req.body.username === "" || req.body.password === ""){
-    error.push("Veuillez remplir toutes les informations")
-  } else if(user == null) {
-    error.push("Utilisateur pas inscrit")
+    error.push("Veuillez remplir tous les champs")
+  // } else if(!user && !req.body.password){
+  //   error.push("Mot de passe incorrect")
+  }else if(!user) {
+    error.push(`L'utilisateur ${req.body.username} n'existe pas`)
   }
 
   res.json({ user, error });
