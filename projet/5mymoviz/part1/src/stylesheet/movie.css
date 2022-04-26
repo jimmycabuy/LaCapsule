@@ -1,0 +1,32 @@
+.card_text {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.card_movie {
+    margin-bottom: 25px;
+}
+
+body {
+    background-color: rgb(42, 42, 42);
+}
+
+.heart:hover {
+    cursor: pointer;
+    color: #FD5D5D;
+}
+
+.star:hover {
+    cursor: pointer;
+    color: #FFD36E;
+}
+
+.movie_title {
+    margin-bottom: 30px;
+}
+
+.synopsis {
+    font-weight: bold;
+    text-decoration: underline;
+}
