@@ -9,30 +9,38 @@ function ScreenHome() {
   const [signUpEmail, setSignUpEmail] = useState("");
   const [signUpPassword, setSgnUpPassword] = useState("");
   const [isSign, setIsSign] = useState(false);
+  const [errorSignUp, setErrorSignUp] = useState("");
+
   // signIn useState
   const [signInUsername, setSignInUsername] = useState("");
   const [signInPassword, setSgnInPassword] = useState("");
-
+  const [errorSignIn, setErrorSignIn] = useState("");
 
   var handleSubmitSignUp = async () => {
-    await fetch ("/sign-up", {
+    const dataSignUp = await fetch ("/sign-up", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `username=${signUpUsername}&email=${signUpEmail}&password=${signUpPassword}`,
     })
-    setIsSign(true);
+    const bodySignUp = await dataSignUp.json();
+    var messageErreurSignUp = bodySignUp.error;
+    setErrorSignUp(messageErreurSignUp);
+    if (bodySignUp.error.length === 0){
+      setIsSign(true);
+    }
   };
 
   var handleSubmitSignIn = async () => {
-    const data = await fetch ("/sign-in", {
+    const dataSignIn = await fetch ("/sign-in", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
       body: `username=${signInUsername}&password=${signInPassword}`,
     })
     
-    const body = await data.json();
-    console.log(body)
-    if (body.user !== null){
+    const bodySignIn = await dataSignIn.json();
+    var messageErreurSignIn = bodySignIn.error;
+    setErrorSignIn(messageErreurSignIn);
+    if (bodySignIn.user !== null){
       setIsSign(true);
     }
   };
@@ -46,13 +54,14 @@ function ScreenHome() {
       {/* SIGN-IN */}
 
       <div className="Sign">
+      <span style={{ color:"red"}}>{errorSignIn}</span>
         <Input style={{ marginBottom: "10px" }} className="Login-input" placeholder="username" onChange={(e) => setSignInUsername(e.target.value)}
           value={signInUsername} />
  
         <Input.Password style={{ marginBottom: "10px" }} className="Login-input" placeholder="password" onChange={(e) => setSgnInPassword(e.target.value)}
           value={signInPassword} />
 
-        <Button style={{ width: "80px", justifyContent:"center" }} onClick={() => handleSubmitSignIn()} >
+        <Button style={{ width: "80px" }} onClick={() => handleSubmitSignIn()} >
           Sign-in
         </Button>
       </div>
@@ -60,6 +69,7 @@ function ScreenHome() {
       {/* SIGN-UP */}
 
       <div className="Sign">
+      <span style={{ color:"red"}}>{errorSignUp}</span>
         <Input style={{ marginBottom: "10px" }}
           className="Login-input"
           placeholder="username"
@@ -70,10 +80,11 @@ function ScreenHome() {
           value={signUpEmail} />
         <Input.Password style={{ marginBottom: "10px" }} className="Login-input" placeholder="password" onChange={(e) => setSgnUpPassword(e.target.value)}
           value={signUpPassword} />
-
-        <Button style={{ width: "80px", textAlign:"center" }} onClick={() => handleSubmitSignUp()}>
+        
+        <Button style={{ width: "80px" }} onClick={() => handleSubmitSignUp()}>
           Sign-up
         </Button>
+        
       </div>
     </div>
   );
