@@ -46,13 +46,13 @@ function ScreenHome() {
       {/* SIGN-IN */}
 
       <div className="Sign">
-        <Input className="Login-input" placeholder="username" onChange={(e) => setSignInUsername(e.target.value)}
+        <Input style={{ marginBottom: "10px" }} className="Login-input" placeholder="username" onChange={(e) => setSignInUsername(e.target.value)}
           value={signInUsername} />
  
-        <Input.Password className="Login-input" placeholder="password" onChange={(e) => setSgnInPassword(e.target.value)}
+        <Input.Password style={{ marginBottom: "10px" }} className="Login-input" placeholder="password" onChange={(e) => setSgnInPassword(e.target.value)}
           value={signInPassword} />
 
-        <Button style={{ width: "80px" }} type="primary" onClick={() => handleSubmitSignIn()} >
+        <Button style={{ width: "80px", justifyContent:"center" }} onClick={() => handleSubmitSignIn()} >
           Sign-in
         </Button>
       </div>
@@ -60,18 +60,18 @@ function ScreenHome() {
       {/* SIGN-UP */}
 
       <div className="Sign">
-        <Input
+        <Input style={{ marginBottom: "10px" }}
           className="Login-input"
           placeholder="username"
           onChange={(e) => setSignUpUsername(e.target.value)}
           value={signUpUsername}
         />
-        <Input className="Login-input" placeholder="email" onChange={(e) => setSignUpEmail(e.target.value)}
+        <Input style={{ marginBottom: "10px" }} className="Login-input" placeholder="email" onChange={(e) => setSignUpEmail(e.target.value)}
           value={signUpEmail} />
-        <Input.Password className="Login-input" placeholder="password" onChange={(e) => setSgnUpPassword(e.target.value)}
+        <Input.Password style={{ marginBottom: "10px" }} className="Login-input" placeholder="password" onChange={(e) => setSgnUpPassword(e.target.value)}
           value={signUpPassword} />
 
-        <Button style={{ width: "80px" }} type="primary" onClick={() => handleSubmitSignUp()}>
+        <Button style={{ width: "80px", textAlign:"center" }} onClick={() => handleSubmitSignUp()}>
           Sign-up
         </Button>
       </div>

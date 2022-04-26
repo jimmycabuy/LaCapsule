@@ -1,5 +1,5 @@
-
 @import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
 
 h4 {
   color: white;
@@ -12,12 +12,11 @@ h4 {
     align-items: center;
     justify-content: center;
     height:100vh;
-    background-image: url('/images/flat01.png');
+    background-image: url('/images/background1.jpg');
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    
-
+    font-family: 'Poppins', sans-serif;
     }
 
 .Login-input{
@@ -33,7 +32,6 @@ h4 {
     padding-bottom: 15px;
     border-radius: 5%;
     border-color: white;
-    background-color: rgba(63,169,255,0.5);
     margin: 40px;
 }
 
@@ -60,7 +58,4 @@ h4 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-
 }
-
-
