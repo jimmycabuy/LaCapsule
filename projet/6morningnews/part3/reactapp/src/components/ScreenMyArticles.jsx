@@ -40,7 +40,16 @@ function ScreenMyArticles(props) {
       <Nav />
       <div className="Banner" />
       <div className="Card">
-        <span style={{color: "red", fontSize:"25px", paddingTop:"20px", fontFamily:"'Poppins', sans-serif"}}>{noArticle}</span>
+        <span
+          style={{
+            color: "red",
+            fontSize: "25px",
+            paddingTop: "20px",
+            fontFamily: "'Poppins', sans-serif",
+          }}
+        >
+          {noArticle}
+        </span>
         {props.myArticles.map((articleWishlist, i) => (
           <div key={i} style={{ display: "flex", justifyContent: "center" }}>
             <Card
