@@ -28,27 +28,29 @@ router.post("/sign-up", async function (req, res, next) {
   await newUser.save();
 }
   res.json({ newUser, error });
-  res.render("index");
+  // res.render("index");
 });
 
 /* Sign-in */
 router.post("/sign-in", async function (req, res, next) {
   let error = [];
   var user = await userModel.findOne({
-    username: req.body.username,
-    password: req.body.password,
+    username: req.body.username
+    // password: req.body.password,
   });
 
   if(req.body.username === "" || req.body.password === ""){
     error.push("Veuillez remplir tous les champs")
-  // } else if(!user && !req.body.password){
-  //   error.push("Mot de passe incorrect")
+  } else if(user && req.body.password !== user?.password){
+    error.push("Mot de passe incorrect")
   }else if(!user) {
     error.push(`L'utilisateur ${req.body.username} n'existe pas`)
+  } else if(user && req.body.password === user?.password){
+    error.push("success")
   }
 
   res.json({ user, error });
-  res.render("index");
+  // res.render("index");
 });
 
 module.exports = router;

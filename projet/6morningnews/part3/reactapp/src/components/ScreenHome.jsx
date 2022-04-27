@@ -40,7 +40,7 @@ function ScreenHome() {
     const bodySignIn = await dataSignIn.json();
     var messageErreurSignIn = bodySignIn.error;
     setErrorSignIn(messageErreurSignIn);
-    if (bodySignIn.user !== null){
+    if (messageErreurSignIn[0] === "success"){
       setIsSign(true);
     }
   };
