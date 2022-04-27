@@ -42,6 +42,7 @@ function ScreenMyArticles(props) {
       <div className="Card">
         <span
           style={{
+            color: "black",
             fontSize: "25px",
             paddingTop: "20px",
             fontFamily: "'Poppins', sans-serif",
