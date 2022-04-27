@@ -13,7 +13,7 @@ router.post("/sign-up", async function (req, res, next) {
   const data = await userModel.findOne({email : req.body.email })
   
   if(data != null){
-    error.push("L'utilisateur est déjà inscrit")
+    error.push("Cet utilisateur est déjà inscrit")
   }
   if(req.body.username === "" || req.body.email === "" || req.body.password === ""){
     error.push("Veuillez remplir tous les champs")
