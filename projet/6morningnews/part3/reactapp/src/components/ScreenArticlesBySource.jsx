@@ -3,7 +3,7 @@ import "../App.css";
 import { Card, Icon, Modal } from "antd";
 import Nav from "./Nav";
 import { useParams } from "react-router-dom";
-import { connect } from 'react-redux'
+import { connect } from "react-redux";
 
 const { Meta } = Card;
 
@@ -58,8 +58,18 @@ function ScreenArticlesBySource(props) {
               }}
               cover={<img alt="example" src={articleBySource.urlToImage} />}
               actions={[
-                <Icon type="read" key="ellipsis2" onClick={() => showModal(articleBySource.title, articleBySource.content) }/>,
-                <Icon type="like" key="ellipsis" onClick={() => props.addToWishList(articleBySource) }/>
+                <Icon
+                  type="read"
+                  key="ellipsis2"
+                  onClick={() =>
+                    showModal(articleBySource.title, articleBySource.content)
+                  }
+                />,
+                <Icon
+                  type="like"
+                  key="ellipsis"
+                  onClick={() => props.addToWishList(articleBySource)}
+                />,
               ]}
             >
               <Meta
@@ -67,33 +77,29 @@ function ScreenArticlesBySource(props) {
                 description={articleBySource.description}
               />
             </Card>
-            
           </div>
-        ))};
+        ))}
         <Modal
-              title={articleTitle}
-              visible={isModalVisible}
-              onOk={handleOk}
-              onCancel={handleCancel}
-            >
-              <p>{articleContent}</p>
-            </Modal>
+          title={articleTitle}
+          visible={isModalVisible}
+          onOk={handleOk}
+          onCancel={handleCancel}
+        >
+          <p>{articleContent}</p>
+        </Modal>
       </div>
     </div>
   );
 }
 
-function mapDispatchToProps(dispatch){
+function mapDispatchToProps(dispatch) {
   return {
-    addToWishList: function(article){
-      dispatch({type: 'addArticle', articleLiked : article})
-    }
-  }
+    addToWishList: function (article) {
+      dispatch({ type: "addArticle", articleLiked: article });
+    },
+  };
 }
 
 // export default ScreenArticlesBySource;
 
-export default connect(
-  null,
-  mapDispatchToProps
-) (ScreenArticlesBySource);
+export default connect(null, mapDispatchToProps)(ScreenArticlesBySource);
