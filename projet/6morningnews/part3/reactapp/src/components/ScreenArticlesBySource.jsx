@@ -3,10 +3,11 @@ import "../App.css";
 import { Card, Icon, Modal } from "antd";
 import Nav from "./Nav";
 import { useParams } from "react-router-dom";
+import { connect } from 'react-redux'
 
 const { Meta } = Card;
 
-function ScreenArticlesBySource() {
+function ScreenArticlesBySource(props) {
   const [articleBySourceList, setSarticleBySourceList] = useState([]);
   const [articleTitle, setArticleTitle] = useState("");
   const [articleContent, setArticleContent] = useState("");
@@ -58,7 +59,7 @@ function ScreenArticlesBySource() {
               cover={<img alt="example" src={articleBySource.urlToImage} />}
               actions={[
                 <Icon type="read" key="ellipsis2" onClick={() => showModal(articleBySource.title, articleBySource.content) }/>,
-                <Icon type="like" key="ellipsis" />
+                <Icon type="like" key="ellipsis" onClick={() => props.addToWishList(articleBySource) }/>
               ]}
             >
               <Meta
@@ -82,4 +83,17 @@ function ScreenArticlesBySource() {
   );
 }
 
-export default ScreenArticlesBySource;
+function mapDispatchToProps(dispatch){
+  return {
+    addToWishList: function(article){
+      dispatch({type: 'addArticle', articleLiked : article})
+    }
+  }
+}
+
+// export default ScreenArticlesBySource;
+
+export default connect(
+  null,
+  mapDispatchToProps
+) (ScreenArticlesBySource);

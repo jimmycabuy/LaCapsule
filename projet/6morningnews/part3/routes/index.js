@@ -28,7 +28,6 @@ router.post("/sign-up", async function (req, res, next) {
   await newUser.save();
 }
   res.json({ newUser, error });
-  // res.render("index");
 });
 
 /* Sign-in */
@@ -50,7 +49,6 @@ router.post("/sign-in", async function (req, res, next) {
   }
 
   res.json({ user, error });
-  // res.render("index");
 });
 
 module.exports = router;
