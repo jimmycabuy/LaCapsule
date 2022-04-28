@@ -1,6 +1,8 @@
 var express = require("express");
 var router = express.Router();
 var userModel = require("../models/users");
+var bcrypt = require('bcrypt');
+var uid2 = require('uid2');
 
 /* GET home page. */
 router.get("/", function (req, res, next) {
@@ -11,6 +13,7 @@ router.get("/", function (req, res, next) {
 router.post("/sign-up", async function (req, res, next) {
   let error = [];
   const data = await userModel.findOne({email : req.body.email })
+  var hash = bcrypt.hashSync(req.body.password, 10)
   
   if(data != null){
     error.push("Cet utilisateur est déjà inscrit")
@@ -23,7 +26,7 @@ router.post("/sign-up", async function (req, res, next) {
   var newUser = new userModel({
     username: req.body.username,
     email: req.body.email,
-    password: req.body.password,
+    password: hash
   });
   await newUser.save();
 }
