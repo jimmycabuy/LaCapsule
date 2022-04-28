@@ -26,7 +26,8 @@ router.post("/sign-up", async function (req, res, next) {
   var newUser = new userModel({
     username: req.body.username,
     email: req.body.email,
-    password: hash
+    password: hash,
+    token : uid2(5)
   });
   await newUser.save();
 }
@@ -41,16 +42,18 @@ router.post("/sign-in", async function (req, res, next) {
     // password: req.body.password,
   });
 
-  if(req.body.username === "" || req.body.password === ""){
+  if(req.body.username === "" || req.body.password === "" || req.body.token === ""){
     error.push("Veuillez remplir tous les champs")
-  } else if(user && req.body.password !== user?.password){
+  } else if(user && !bcrypt.compareSync(req.body.password, user.password)){
     error.push("Mot de passe incorrect")
   }else if(!user) {
     error.push(`L'utilisateur ${req.body.username} n'existe pas`)
-  } else if(user && req.body.password === user?.password){
-    error.push("success")
+  } else if(user && bcrypt.compareSync(req.body.password, user.password) && req.body.token !== user.token){
+    error.push("Token incorrect")
   }
-
+  else if(user && bcrypt.compareSync(req.body.password, user.password) && req.body.token === user.token){
+    error.push("success")
+  } 
   res.json({ user, error });
 });
 
