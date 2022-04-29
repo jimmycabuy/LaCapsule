@@ -1,0 +1,37 @@
+{
+    "name": "@types/react-slick",
+    "version": "0.23.8",
+    "description": "TypeScript definitions for react-slick",
+    "homepage": "https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/react-slick",
+    "license": "MIT",
+    "contributors": [
+        {
+            "name": "Giedrius Grabauskas",
+            "url": "https://github.com/GiedriusGrabauskas",
+            "githubUsername": "GiedriusGrabauskas"
+        },
+        {
+            "name": "Andrew Makarov",
+            "url": "https://github.com/r3nya",
+            "githubUsername": "r3nya"
+        },
+        {
+            "name": "Shannor Trotty",
+            "url": "https://github.com/Shannor",
+            "githubUsername": "Shannor"
+        }
+    ],
+    "main": "",
+    "types": "index.d.ts",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/DefinitelyTyped/DefinitelyTyped.git",
+        "directory": "types/react-slick"
+    },
+    "scripts": {},
+    "dependencies": {
+        "@types/react": "*"
+    },
+    "typesPublisherContentHash": "4c6416ea0f617f34d1249d6853f54af77e883f4a77494b1c69f78261dfc05179",
+    "typeScriptVersion": "3.8"
+}
