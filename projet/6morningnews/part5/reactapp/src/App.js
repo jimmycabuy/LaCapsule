@@ -6,10 +6,11 @@ import ScreenArticlesBySource from "./components/ScreenArticlesBySource.jsx";
 import ScreenSource from "./components/ScreenSource.jsx";
 import "./App.css";
 import wishlist from "./reducers/article.js";
+import token from "./reducers/token.js";
 import { Provider } from "react-redux";
 import { createStore, combineReducers } from "redux";
 
-const magasin = createStore(combineReducers({ wishlist }));
+const magasin = createStore(combineReducers({ wishlist, token }));
 
 export default function App() {
   return (
@@ -25,4 +26,3 @@ export default function App() {
     </Provider>
   );
 }
-// export default App;

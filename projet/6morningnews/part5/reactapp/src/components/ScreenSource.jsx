@@ -3,12 +3,14 @@ import "../App.css";
 import { List, Avatar } from "antd";
 import Nav from "./Nav";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
 
-function ScreenSource() {
+function ScreenSource(props) {
   const [sourceList, setSourceList] = useState([]);
+
   async function loadSource(country) {
     var rawResponse = await fetch(
-      `https://newsapi.org/v2/top-headlines/sources?apiKey=f588bacf9c9e41adb12cb1223d34402d&country=${country}`
+      `https://newsapi.org/v2/top-headlines/sources?apiKey=7f4f30e7e1a547a1bd9085d3c96aef0b&country=${country}`
     );
     var response = await rawResponse.json();
     var sourcesFromAPI = response.sources.map((sourceAPI) => {
@@ -21,11 +23,22 @@ function ScreenSource() {
     });
     setSourceList(sourcesFromAPI);
     console.log(sourcesFromAPI);
+
   }
+  
+  // async function getArticles() {
+  //   console.log(props.token)
+  //   var data = await fetch (`/wishlist/${props.token}`)
+  //   var body = await data.json()
+  //   if(body.result && body.articles){
+  //     props.importArticles(body.articles)
+  //   }
+  // }
 
   useEffect(() => {
     loadSource("fr");
-  }, []);
+    // getArticles();
+  }, [props.token]);
 
   return (
     <div>
@@ -109,4 +122,21 @@ function ScreenSource() {
   );
 }
 
-export default ScreenSource;
+
+function mapDispatchToProps (dispatch){
+  return {
+    importArticles : function(articles){
+      dispatch({type: "importArticles", articles})
+    }
+  }
+}
+
+function mapStateToProps(state) {
+  return { myArticles: state.wishlist, token: state.token };
+}
+
+export default connect(
+  mapDispatchToProps,
+  mapStateToProps,
+  // null
+)(ScreenSource);

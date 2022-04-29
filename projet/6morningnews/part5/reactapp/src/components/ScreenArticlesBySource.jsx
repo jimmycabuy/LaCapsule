@@ -17,7 +17,7 @@ function ScreenArticlesBySource(props) {
   useEffect(() => {
     async function loadArticlesBySource() {
       var rawResponse2 = await fetch(
-        `https://newsapi.org/v2/top-headlines?sources=${id}&apiKey=f588bacf9c9e41adb12cb1223d34402d`
+        `https://newsapi.org/v2/top-headlines?sources=${id}&apiKey=7f4f30e7e1a547a1bd9085d3c96aef0b`
       );
       var response2 = await rawResponse2.json();
       setSarticleBySourceList(response2.articles);
@@ -38,6 +38,16 @@ function ScreenArticlesBySource(props) {
   const handleCancel = () => {
     setIsModalVisible(false);
   };
+
+
+var addToWishList = async function (article) {
+  props.addToWishList(article)
+  await fetch ("/wishlist", {
+    method: "POST",
+    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+    body: `articleTitle=${article.title}&articleImage=${article.urlToImage}&articleDescription=${article.description}&articleContent=${article.content}&token=${props.token}`,
+  })
+}
 
   return (
     <div>
@@ -68,7 +78,7 @@ function ScreenArticlesBySource(props) {
                 <Icon
                   type="like"
                   key="ellipsis"
-                  onClick={() => props.addToWishList(articleBySource)}
+                  onClick={() => addToWishList(articleBySource)}
                 />,
               ]}
             >
@@ -92,14 +102,22 @@ function ScreenArticlesBySource(props) {
   );
 }
 
-function mapDispatchToProps(dispatch) {
+function mapStateToProps(state) {
+  return { token: state.token };
+}
+
+// var userToken = "OY7up";
+
+function mapDispatchToProps(dispatch, props) {
   return {
-    addToWishList: function (article) {
+    addToWishList: async function (article) {
       dispatch({ type: "addArticle", articleLiked: article });
     },
   };
 }
 
-// export default ScreenArticlesBySource;
-
-export default connect(null, mapDispatchToProps)(ScreenArticlesBySource);
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps,
+  null
+)(ScreenArticlesBySource);

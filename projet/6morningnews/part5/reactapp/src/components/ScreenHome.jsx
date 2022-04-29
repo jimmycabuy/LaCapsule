@@ -19,6 +19,14 @@ function ScreenHome(props) {
   const [signInPassword, setSgnInPassword] = useState("");
   const [errorSignIn, setErrorSignIn] = useState("");
 
+  async function getArticles(token) {
+    var data = await fetch (`/wishlist/${token}`)
+    var body = await data.json()
+    if(body.result && body.articles){
+      body.articles.forEach(article => props.importArticle(article))
+    }
+  }
+
   var handleSubmitSignUp = async () => {
     const dataSignUp = await fetch ("/sign-up", {
       method: "POST",
@@ -32,6 +40,7 @@ function ScreenHome(props) {
       // setIsSign(true);
       setTokenSignUp(`Votre token est : ${bodySignUp.newUser.token}`)
       props.addToken(bodySignUp.newUser.token)
+      getArticles(bodySignUp.newUser.token)
     }
   };
 
@@ -47,6 +56,8 @@ function ScreenHome(props) {
     setErrorSignIn(messageErreurSignIn);
     if (messageErreurSignIn[0] === "success"){
       setIsSign(true);
+      props.addToken(bodySignIn.user.token)
+      getArticles(bodySignIn.user.token)
     }
   };
 
@@ -102,6 +113,9 @@ function mapDispatchToProps(dispatch){
   return {
     addToken: function(token){
       dispatch({type: 'addToken', token: token})
+    },
+    importArticle : function(articles){
+      dispatch({type: "importArticles", articles})
     }
   }
   }

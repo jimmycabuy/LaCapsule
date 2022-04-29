@@ -2,8 +2,9 @@ var mongoose = require("mongoose");
 
 var wishlistSchema = mongoose.Schema({
   title: String,
-  image : String,
-  description : String
+  image: String,
+  description: String,
+  content: String
 })
 
 var userSchema = mongoose.Schema({
@@ -11,7 +12,7 @@ var userSchema = mongoose.Schema({
   email: String,
   password: String,
   token: String,
-  article : wishlistSchema
+  wishlist: [wishlistSchema]
 });
 
 var userModel = mongoose.model("users", userSchema);
