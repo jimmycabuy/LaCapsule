@@ -39,15 +39,14 @@ function ScreenArticlesBySource(props) {
     setIsModalVisible(false);
   };
 
-
-var addToWishList = async function (article) {
-  props.addToWishList(article)
-  await fetch ("/wishlist", {
-    method: "POST",
-    headers: { "Content-Type": "application/x-www-form-urlencoded" },
-    body: `articleTitle=${article.title}&articleImage=${article.urlToImage}&articleDescription=${article.description}&articleContent=${article.content}&token=${props.token}`,
-  })
-}
+  var addToWishList = async function (article) {
+    props.addToWishList(article);
+    await fetch("/wishlist", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: `articleTitle=${article.title}&articleImage=${article.urlToImage}&articleDescription=${article.description}&articleContent=${article.content}&token=${props.token}`,
+    });
+  };
 
   return (
     <div>

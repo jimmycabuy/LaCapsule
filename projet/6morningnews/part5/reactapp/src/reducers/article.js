@@ -23,13 +23,11 @@ export default function (wishlist = [], action) {
     }
     wishlistCopy2.splice(position, 1);
     return wishlistCopy2;
-  } 
-  else if(action.type === "importArticles"){
+  } else if (action.type === "importArticles") {
     var wishlistCopy3 = [...wishlist];
     wishlistCopy3.push(action.articles)
     return wishlistCopy3
-  }
-  else {
+  } else {
     return wishlist;
   }
 }
