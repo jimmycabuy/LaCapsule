@@ -12,6 +12,7 @@ export default function (wishlist = [], action) {
       wishlistCopy.push(action.articleLiked);
     }
     return wishlistCopy;
+
   } else if (action.type === "removeArticle") {
     var wishlistCopy2 = [...wishlist];
 
@@ -23,10 +24,10 @@ export default function (wishlist = [], action) {
     }
     wishlistCopy2.splice(position, 1);
     return wishlistCopy2;
+
   } else if (action.type === "importArticles") {
-    var wishlistCopy3 = [...wishlist];
-    wishlistCopy3.push(action.articles)
-    return wishlistCopy3
+    return action.articles;
+
   } else {
     return wishlist;
   }

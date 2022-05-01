@@ -17,7 +17,7 @@ function ScreenArticlesBySource(props) {
   useEffect(() => {
     async function loadArticlesBySource() {
       var rawResponse2 = await fetch(
-        `https://newsapi.org/v2/top-headlines?sources=${id}&apiKey=7f4f30e7e1a547a1bd9085d3c96aef0b`
+        `https://newsapi.org/v2/top-headlines?sources=${id}&apiKey=ac5873da9223433c91ff04e9f46c5dd9`
       );
       var response2 = await rawResponse2.json();
       setSarticleBySourceList(response2.articles);
@@ -44,7 +44,7 @@ function ScreenArticlesBySource(props) {
     await fetch("/wishlist", {
       method: "POST",
       headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: `articleTitle=${article.title}&articleImage=${article.urlToImage}&articleDescription=${article.description}&articleContent=${article.content}&token=${props.token}`,
+      body: `title=${article.title}&urlToImage=${article.urlToImage}&description=${article.description}&content=${article.content}&token=${props.token}`,
     });
   };
 
@@ -105,9 +105,7 @@ function mapStateToProps(state) {
   return { token: state.token };
 }
 
-// var userToken = "OY7up";
-
-function mapDispatchToProps(dispatch, props) {
+function mapDispatchToProps(dispatch) {
   return {
     addToWishList: async function (article) {
       dispatch({ type: "addArticle", articleLiked: article });

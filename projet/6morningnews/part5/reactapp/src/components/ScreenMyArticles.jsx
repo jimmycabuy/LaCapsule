@@ -3,7 +3,6 @@ import "../App.css";
 import { Card, Icon, Modal } from "antd";
 import Nav from "./Nav";
 import { connect } from "react-redux";
-
 const { Meta } = Card;
 
 function ScreenMyArticles(props) {
@@ -11,6 +10,15 @@ function ScreenMyArticles(props) {
   const [articleContent, setArticleContent] = useState("");
   const [isModalVisible, setIsModalVisible] = useState(false);
   const [noArticle, setNoArticle] = useState("");
+
+  var removeToWishList = async (title) => {
+    props.removeToWishList(title)
+    await fetch(`/wishlist`, {
+      method: 'DELETE',
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      body: `token=${props.token}&title=${title}`
+    })
+  }
 
   const showModal = (title, content) => {
     setIsModalVisible(true);
@@ -65,14 +73,13 @@ function ScreenMyArticles(props) {
                 <Icon
                   type="read"
                   key="ellipsis2"
-                  onClick={() =>
-                    showModal(articleWishlist.title, articleWishlist.content)
+                  onClick={() => showModal(articleWishlist.title, articleWishlist.content)
                   }
                 />,
                 <Icon
                   type="delete"
                   key="ellipsis"
-                  onClick={() => props.removeToWishList(articleWishlist)}
+                  onClick={() => removeToWishList(articleWishlist.title)}
                 />,
               ]}
             >
@@ -97,7 +104,7 @@ function ScreenMyArticles(props) {
 }
 
 function mapStateToProps(state) {
-  return { myArticles: state.wishlist };
+  return { myArticles: state.wishlist, token: state.token };
 }
 
 function mapDispatchToProps(dispatch) {
@@ -111,7 +118,4 @@ function mapDispatchToProps(dispatch) {
 export default connect(
   mapStateToProps,
   mapDispatchToProps,
-  // null
 )(ScreenMyArticles);
-
-// export default ScreenMyArticles;

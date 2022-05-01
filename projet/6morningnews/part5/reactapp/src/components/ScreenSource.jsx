@@ -10,7 +10,7 @@ function ScreenSource(props) {
 
   async function loadSource(country) {
     var rawResponse = await fetch(
-      `https://newsapi.org/v2/top-headlines/sources?apiKey=7f4f30e7e1a547a1bd9085d3c96aef0b&country=${country}`
+      `https://newsapi.org/v2/top-headlines/sources?apiKey=ac5873da9223433c91ff04e9f46c5dd9&country=${country}`
     );
     var response = await rawResponse.json();
     var sourcesFromAPI = response.sources.map((sourceAPI) => {
@@ -26,19 +26,20 @@ function ScreenSource(props) {
 
   }
   
-  // async function getArticles() {
-  //   console.log(props.token)
-  //   var data = await fetch (`/wishlist/${props.token}`)
-  //   var body = await data.json()
-  //   if(body.result && body.articles){
-  //     props.importArticles(body.articles)
-  //   }
-  // }
-
   useEffect(() => {
     loadSource("fr");
-    // getArticles();
-  }, [props.token]);
+  }, []);
+
+  useEffect(() => {
+    const getArticles = async () => {
+      const data = await fetch(`/wishlist/${props.token}`)
+      const body = await data.json()
+      if (body.result && body.articles) {
+        props.importArticles(body.articles)
+      }
+    }
+    getArticles()
+  }, [])
 
   return (
     <div>
@@ -122,18 +123,18 @@ function ScreenSource(props) {
   );
 }
 
+function mapStateToProps(state) {
+  return { myArticles: state.wishlist, token: state.token };
+}
 
 function mapDispatchToProps (dispatch){
   return {
     importArticles : function(articles){
-      dispatch({type: "importArticles", articles})
+      dispatch({ type: "importArticles", articles })
     }
   }
 }
 
-function mapStateToProps(state) {
-  return { myArticles: state.wishlist, token: state.token };
-}
 
 export default connect(
   mapDispatchToProps,

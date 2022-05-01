@@ -1,20 +1,20 @@
-var mongoose = require("mongoose");
+const mongoose = require('mongoose')
 
-var wishlistSchema = mongoose.Schema({
-  title: String,
-  image: String,
-  description: String,
-  content: String
+const articleSchema = mongoose.Schema({
+    title: String,
+    description: String,
+    content: String,
+    urlToImage: String,
 })
 
-var userSchema = mongoose.Schema({
-  username: String,
-  email: String,
-  password: String,
-  token: String,
-  wishlist: [wishlistSchema]
-});
+const userSchema = mongoose.Schema({
+    username: String,
+    email: String,
+    password: String,
+    token: String,
+    articles: [articleSchema],
+})
 
-var userModel = mongoose.model("users", userSchema);
+const userModel = mongoose.model('users', userSchema)
 
-module.exports = userModel;
+module.exports = userModel
