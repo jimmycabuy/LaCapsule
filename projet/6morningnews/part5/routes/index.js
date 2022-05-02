@@ -6,7 +6,7 @@ var bcrypt = require('bcrypt');
 
 var userModel = require('../models/users')
 
-
+// Sign-up 
 router.post('/sign-up', async function (req, res, next) {
 
   var error = []
@@ -22,9 +22,9 @@ router.post('/sign-up', async function (req, res, next) {
     error.push('utilisateur déjà présent')
   }
 
-  if (req.body.usernameFromFront == ''
-    || req.body.emailFromFront == ''
-    || req.body.passwordFromFront == ''
+  if (req.body.usernameFromFront == '' ||
+    req.body.emailFromFront == '' ||
+    req.body.passwordFromFront == ''
   ) {
     error.push('champs vides')
   }
@@ -50,9 +50,15 @@ router.post('/sign-up', async function (req, res, next) {
   }
 
 
-  res.json({ result, saveUser, error, token })
+  res.json({
+    result,
+    saveUser,
+    error,
+    token
+  })
 })
 
+// Sign-in
 router.post('/sign-in', async function (req, res, next) {
 
   var result = false
@@ -60,8 +66,8 @@ router.post('/sign-in', async function (req, res, next) {
   var error = []
   var token = null
 
-  if (req.body.emailFromFront == ''
-    || req.body.passwordFromFront == ''
+  if (req.body.emailFromFront == '' ||
+    req.body.passwordFromFront == ''
   ) {
     error.push('champs vides')
   }
@@ -87,14 +93,22 @@ router.post('/sign-in', async function (req, res, next) {
   }
 
 
-  res.json({ result, user, error, token })
+  res.json({
+    result,
+    user,
+    error,
+    token
+  })
 
 
 })
 
+// Add article to wishlist and to database
 router.post('/wishlist', async function (req, res) {
   var result = false
-  var user = await userModel.findOne({ token: req.body.token })
+  var user = await userModel.findOne({
+    token: req.body.token
+  })
 
   if (user !== null && !user.articles.find(article => article.title === req.body.title)) {
     user.articles.push({
@@ -110,25 +124,36 @@ router.post('/wishlist', async function (req, res) {
     }
   }
 
-  res.json({ result })
+  res.json({
+    result
+  })
 })
 
+// Get article from database
 router.get('/wishlist/:token', async function (req, res) {
   var result = false
-  var user = await userModel.findOne({ token: req.params.token })
+  var user = await userModel.findOne({
+    token: req.params.token
+  })
   var articles = []
-  
+
   if (user !== null) {
     articles = user.articles
     result = true
   }
 
-  res.json({ result, articles })
+  res.json({
+    result,
+    articles
+  })
 })
 
+// Delete article from wishlist and from database
 router.delete('/wishlist', async function (req, res) {
   var result = false
-  var user = await userModel.findOne({ token: req.body.token })
+  var user = await userModel.findOne({
+    token: req.body.token
+  })
 
   if (user !== null) {
     user.articles = user.articles.filter(article => article.title !== req.body.title)
@@ -139,7 +164,9 @@ router.delete('/wishlist', async function (req, res) {
     }
   }
 
-  res.json({ result })
+  res.json({
+    result
+  })
 });
 
 module.exports = router;
