@@ -1,9 +1,10 @@
 import { View } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import React, { useState } from 'react';
+import { connect, Connect } from 'react-redux';
 
-export default function HomeScreen(props) {
-  const [text, setText] = useState('');
+function HomeScreen(props) {
+  const [pseudo, setPseudo] = useState('');
   return (
     <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:"#EFDAD7" }}>
       <Input
@@ -16,7 +17,7 @@ export default function HomeScreen(props) {
       containerStyle={{
         width: 300,
       }}
-      onChangeText={(value) => setText(value)} value={text}
+      onChangeText={(value) => setPseudo(value)}
       />
       <Button
         title="Go To Map"
@@ -40,8 +41,18 @@ export default function HomeScreen(props) {
           marginHorizontal: 50,
           marginVertical: 10,
         }}
-        onPress={() => props.navigation.navigate('PageTab')}
+        onPress={() => {props.submitName(pseudo) ; props.navigation.navigate('PageTab')}}
         />
     </View>
   )
 }
+
+function mapDispatchToProps(dispatch){
+  return{
+    submitName: function (pseudo) {
+      dispatch ({type: "addName", pseudo: pseudo})
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)
+(HomeScreen);

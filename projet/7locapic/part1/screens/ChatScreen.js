@@ -4,7 +4,7 @@ import { Input, Button, ListItem } from 'react-native-elements'
 
 export default function ChatScreen() {
   return (
-    <View style={{ flex:1, paddingTop:50 }}>
+    <View style={{ flex:1, paddingTop:50, backgroundColor:"#FFF" }}>
       <ScrollView style={{ flex:1 }}>
       <ListItem bottomDivider>
         <ListItem.Content>
