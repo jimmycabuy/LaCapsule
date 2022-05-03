@@ -3,8 +3,6 @@ import { NavigationContainer, TabActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from './components/HomeScreen';
-import PageAScreen from './components/PageAScreen';
-import PageBScreen from './components/PageBScreen';
 import { Ionicons } from '@expo/vector-icons';
 import PageStack from './components/PageStack'
 

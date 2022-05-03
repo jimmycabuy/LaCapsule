@@ -1,10 +1,9 @@
 import React from 'react';
-import { NavigationContainer, TabActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import PageAScreen from './PageAScreen';
 import PageBScreen from './PageBScreen';
-import { Ionicons } from '@expo/vector-icons';
+
 
 const Stack = createStackNavigator();
 const Tab = createBottomTabNavigator();
