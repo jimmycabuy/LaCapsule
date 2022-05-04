@@ -14,7 +14,6 @@ export default function(list = [], action){
           }
           listCopy2.splice(position, 1);
           return listCopy2;
-
     } else {
         return list;
     }

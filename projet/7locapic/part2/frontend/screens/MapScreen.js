@@ -4,7 +4,7 @@ import {Marker} from 'react-native-maps';
 import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { Button, Input, Overlay } from 'react-native-elements';
-import { View } from 'react-native';
+import { View, Image } from 'react-native';
 import { connect } from 'react-redux';
 
 function MapScreen(props) {
@@ -22,7 +22,7 @@ function MapScreen(props) {
     async function askPermissions() {
       var { status } = await Permissions.askAsync(Permissions.LOCATION);
       if (status === 'granted') {
-        Location.watchPositionAsync({distanceInterval: 2}, (location) => { setPosition(location.coords); });
+        Location.watchPositionAsync({distanceInterval: 1}, (location) => { setPosition(location.coords); });
       }
     }
     askPermissions();
@@ -36,7 +36,7 @@ function MapScreen(props) {
    }
 
   var markerPOI = props.list.map((POI, i)=>{
-    return <Marker key={i} pinColor="blue" coordinate={{latitude: POI.latitude, longitude: POI.longitude}} title={titlePOI}
+    return <Marker key={i} pinColor="#E3BEC6" coordinate={{latitude: POI.latitude, longitude: POI.longitude}} title={titlePOI}
     description={descPOI} draggable/>
   });
     
@@ -48,7 +48,9 @@ function MapScreen(props) {
         <Marker pinColor="red" coordinate={{latitude: position.latitude, longitude: position.longitude}}
         title="Hello"
         description="I am here"
-        />
+        >
+        <Image source={require('../assets/localisation1.png')} style={{width:20, height:20}}/>
+        </Marker>
         {markerPOI}
       </MapView>
       <Button
