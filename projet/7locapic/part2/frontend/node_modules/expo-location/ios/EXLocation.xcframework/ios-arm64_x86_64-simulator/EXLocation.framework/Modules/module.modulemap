@@ -1,0 +1,6 @@
+framework module EXLocation {
+  umbrella header "EXLocation.h"
+
+  export *
+  module * { export * }
+}

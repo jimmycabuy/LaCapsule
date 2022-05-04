@@ -27,7 +27,10 @@
     "react-native-screens": "~3.10.1",
     "react-native-web": "0.17.1",
     "react-redux": "^8.0.1",
-    "redux": "^4.2.0"
+    "redux": "^4.2.0",
+    "react-native-maps": "0.29.4",
+    "expo-location": "~14.0.1",
+    "expo-permissions": "~13.1.0"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9"
