@@ -1,6 +1,6 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": 19000,
+  "expoServerPort": null,
   "packagerPort": 19000,
   "expoServerNgrokUrl": "https://zs-aru.anonymous.frontend.exp.direct",
   "packagerNgrokUrl": "https://zs-aru.anonymous.frontend.exp.direct",
