@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import MapScreen from './MapScreen';
 import ChatScreen from './ChatScreen';
 import { Ionicons } from '@expo/vector-icons';
-import { backgroundColor } from 'react-native/Libraries/Components/View/ReactNativeStyleAttributes';
 
 const Tab = createBottomTabNavigator();
 
@@ -23,8 +22,8 @@ export default function PageTab() {
      })}
      
      tabBarOptions={{
-      activeTintColor: '#BBBBBB',
-      inactiveTintColor: '#ffffff',
+      activeTintColor: '#FFF',
+      inactiveTintColor: '#AAA',
       style:{
         backgroundColor:"#6867AC"
       }
