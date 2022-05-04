@@ -1,6 +1,6 @@
 import { View, ScrollView, Text } from 'react-native'
 import React from 'react'
-import { Input, Button, ListItem } from 'react-native-elements'
+import { Button, ListItem } from 'react-native-elements'
 import { connect } from 'react-redux';
 
 export function POIScreen(props) {

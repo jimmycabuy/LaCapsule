@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 function MapScreen(props) {
   const [position, setPosition] = useState('');
   const [addPOI, setAddPOI] = useState(false);
-  const [listPOI, setListPOI] = useState([]);
   const [visible, setVisible] = useState(false);
   const [titlePOI, setTitlePOI] = useState('');
   const [descPOI, setDescPOI] = useState('');
@@ -32,12 +31,11 @@ function MapScreen(props) {
    var selectPOI = (e) => {
     if(addPOI){
       setAddPOI(false);
-      setListPOI([...listPOI, { latitude: e.nativeEvent.coordinate.latitude, longitude:e.nativeEvent.coordinate.longitude, title: titlePOI, description: descPOI } ] );
       props.submitPOI({latitude: e.nativeEvent.coordinate.latitude, longitude:e.nativeEvent.coordinate.longitude, title: titlePOI, description: descPOI})
     }
    }
 
-  var markerPOI = listPOI.map((POI, i)=>{
+  var markerPOI = props.list.map((POI, i)=>{
     return <Marker key={i} pinColor="blue" coordinate={{latitude: POI.latitude, longitude: POI.longitude}} title={titlePOI}
     description={descPOI} draggable/>
   });
@@ -106,6 +104,12 @@ function MapScreen(props) {
   )
 }
 
+function mapStateToProps(state){
+  return{
+      list: state.list
+  }
+}
+
 function mapDispatchToProps(dispatch){
   return {
     submitPOI: function(list){
@@ -113,5 +117,5 @@ function mapDispatchToProps(dispatch){
     }
   }
 }
-export default connect(null, mapDispatchToProps)
+export default connect(mapStateToProps, mapDispatchToProps)
 (MapScreen);
