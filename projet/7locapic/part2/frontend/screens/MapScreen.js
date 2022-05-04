@@ -5,17 +5,19 @@ import * as Location from 'expo-location';
 import * as Permissions from 'expo-permissions';
 import { Button, Input, Overlay } from 'react-native-elements';
 import { View } from 'react-native';
+import { connect } from 'react-redux';
 
-export default function MapScreen() {
+function MapScreen(props) {
   const [position, setPosition] = useState('');
   const [addPOI, setAddPOI] = useState(false);
   const [listPOI, setListPOI] = useState([]);
+  const [visible, setVisible] = useState(false);
+  const [titlePOI, setTitlePOI] = useState('');
+  const [descPOI, setDescPOI] = useState('');
 
-  // const [visible, setVisible] = useState(false);
-
-  // const toggleOverlay = () => {
-  //   setVisible(!visible);
-  // }
+  const toggleOverlay = () => {
+    setVisible(!visible);
+  }
 
   useEffect(() => {
     async function askPermissions() {
@@ -28,14 +30,18 @@ export default function MapScreen() {
    }, []);
 
    var selectPOI = (e) => {
-    setListPOI([...listPOI, { latitude: e.nativeEvent.coordinate.latitude, longitude:e.nativeEvent.coordinate.longitude } ] );
-  }
+    if(addPOI){
+      setAddPOI(false);
+      setListPOI([...listPOI, { latitude: e.nativeEvent.coordinate.latitude, longitude:e.nativeEvent.coordinate.longitude, title: titlePOI, description: descPOI } ] );
+      props.submitPOI({latitude: e.nativeEvent.coordinate.latitude, longitude:e.nativeEvent.coordinate.longitude, title: titlePOI, description: descPOI})
+    }
+   }
 
   var markerPOI = listPOI.map((POI, i)=>{
-    return <Marker key={i} pinColor="blue" coordinate={{latitude: POI.latitude, longitude: POI.longitude}}/>
+    return <Marker key={i} pinColor="blue" coordinate={{latitude: POI.latitude, longitude: POI.longitude}} title={titlePOI}
+    description={descPOI} draggable/>
   });
-
-
+    
   return (    
     <View style={{ flex:1, backgroundColor:"#FFF" }}>
       <MapView style={{ flex:1 }}
@@ -63,19 +69,49 @@ export default function MapScreen() {
         borderWidth: 0,
         height: 60,
       }}
-      onPress={()=>setAddPOI(true)}
-      // onPress={toggleOverlay}
+      onPress={()=> { toggleOverlay(), setAddPOI(!addPOI)}}
       />
-      {/* <Overlay isVisible={visible} onBackdropPress={toggleOverlay}>
-      <Input
-      inputStyle={{
-        textAlign:'center',
-        width:200,
+      <Overlay isVisible={visible} onBackdropPress={toggleOverlay}
+      overlayStyle={{
+        width: 350,
+        borderRadius: 15,
+        height: 225,
+        alignItems: 'center',
+        justifyContent: 'center',
       }}
-      placeholder="Your message"
+      >
+      <Input
+      placeholder="Title"
+      onChangeText={(value) => setTitlePOI(value)}
       />
-      </Overlay> */}
-
+      <Input
+      placeholder="Description"
+      onChangeText={(value) => setDescPOI(value)}
+      />
+      <Button
+      title="Add"
+      titleStyle={{ fontWeight: '500' }}
+      buttonStyle={{
+        backgroundColor: '#E3BEC6',
+        borderColor: 'transparent',
+        borderWidth: 0,
+        height: 60,
+        width: 315,
+        borderRadius: 20,
+      }}
+      onPress={() => {toggleOverlay()}}
+      />
+      </Overlay>
   </View>
   )
 }
+
+function mapDispatchToProps(dispatch){
+  return {
+    submitPOI: function(list){
+      dispatch ({type: "addPOI", list: list})
+    }
+  }
+}
+export default connect(null, mapDispatchToProps)
+(MapScreen);

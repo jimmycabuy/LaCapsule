@@ -1,7 +1,7 @@
 import { View } from 'react-native'
 import { Input, Button } from 'react-native-elements'
 import React, { useState } from 'react';
-import { connect, Connect } from 'react-redux';
+import { connect } from 'react-redux';
 
 function HomeScreen(props) {
   const [pseudo, setPseudo] = useState('');

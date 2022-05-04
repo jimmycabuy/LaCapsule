@@ -1,4 +1,4 @@
-import { View, ScrollView } from 'react-native'
+import { View, ScrollView, KeyboardAvoidingView } from 'react-native'
 import React from 'react'
 import { Input, Button, ListItem } from 'react-native-elements'
 
@@ -32,13 +32,14 @@ export default function ChatScreen() {
       </ListItem>    
       </ScrollView>
  
+      <KeyboardAvoidingView behavior='padding' enabled>
+        <View>
       <Input
-      inputStyle={{
-        textAlign:'center',
-      }}
+      // inputStyle={{
+      //   textAlign:'center',
+      // }}
       placeholder="Your message"
       />
-    
       <Button
         title="Envoyer"
         icon={{
@@ -56,7 +57,8 @@ export default function ChatScreen() {
           height: 60,
         }}
         />
-
+        </View>
+      </KeyboardAvoidingView>
     </View>
   )
 }

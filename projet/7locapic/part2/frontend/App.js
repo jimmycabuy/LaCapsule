@@ -5,9 +5,10 @@ import { NavigationContainer } from '@react-navigation/native';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import pseudo from './reducers/pseudo'
+import list from './reducers/poi'
 
 const Stack = createStackNavigator();
-const store = createStore(combineReducers({pseudo}))
+const store = createStore(combineReducers({pseudo, list}))
 
 export default function App() {
   return (
