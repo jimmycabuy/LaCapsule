@@ -9,7 +9,12 @@ app.get('/', (req, res) => {
 
 io.on('connection', (socket) => {
   socket.on('chat message', msg => {
-    io.emit('chat message', msg);
+    if(msg == "bonjour comment ça va ?"){
+      io.emit('chat message', msg.toUpperCase());
+      io.emit('chat message', "TRES BIEN MERCI");
+    } else {
+      io.emit('chat message', msg.toUpperCase());
+    }
   });
 });
 
