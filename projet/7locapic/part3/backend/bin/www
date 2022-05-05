@@ -24,8 +24,10 @@ var io = require('socket.io')(server);
 
 io.on('connection', function(socket){
   socket.on('sendMessage', function(message){
-    socket.broadcast.emit('sendMessageToAll', message);
-  });
+    io.emit('sendMessageToAll', message);
+    console.log(message);
+  }
+  );
 });
 
 /**

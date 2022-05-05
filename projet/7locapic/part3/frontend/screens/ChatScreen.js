@@ -1,31 +1,32 @@
 import { View, ScrollView, KeyboardAvoidingView } from 'react-native'
-import React from 'react'
 import { Input, Button, ListItem } from 'react-native-elements'
 import socketIOClient from "socket.io-client";
 import React, {useEffect, useState} from 'react'
 
-var socket = socketIOClient("http://10.12.63.75:3000/");
+var socket = socketIOClient("http://172.20.10.5:3000/");
 
 export default function ChatScreen() {
 
-const [currentMessage, setCurrentMessage] = useState('');
-const [listMessage, setListMessage] = useState([]);
+  const [currentMessage, setCurrentMessage] = useState('');
+  const [listMessage, setListMessage] = useState([]);
 
-useEffect(() => {
-  socket.on('sendMessageToAll', (newMessage) => {
-    setListMessage(newMessage);
-  });
-}, [listMessage]);
+  useEffect(() => {
+    socket.on('sendMessageToAll', (newMessage) => {
+      setListMessage([...listMessage, newMessage]);
+      });
+    }, [listMessage]);
 
   return (
     <View style={{ flex:1, paddingTop:50, backgroundColor:"#FFF" }}>
       <ScrollView style={{ flex:1 }}>
-      <ListItem bottomDivider>
+      {listMessage.map((messageData) => (
+        <ListItem bottomDivider>
         <ListItem.Content>
-          <ListItem.Title>Valoche</ListItem.Title>
-          <ListItem.Subtitle>Tu as aussi soixante-dix-sept euros ?</ListItem.Subtitle>
+          <ListItem.Title>Jim</ListItem.Title>
+          <ListItem.Subtitle>{messageData.message}</ListItem.Subtitle>
         </ListItem.Content>
       </ListItem>
+      ) )}
       </ScrollView>
  
       <KeyboardAvoidingView behavior='padding' enabled>
@@ -33,6 +34,7 @@ useEffect(() => {
       <Input
       placeholder="Your message"
       onChangeText={(value) => setCurrentMessage(value)}
+      value={currentMessage}
       />
       <Button
         title="Envoyer"
@@ -50,7 +52,9 @@ useEffect(() => {
           borderWidth: 0,
           height: 60,
         }}
-        onPress={() => socket.emit('sendMessage', {currentMessage}) }
+        onPress={() => {socket.emit('sendMessage', {message : currentMessage}), setCurrentMessage('')} }
+
+        // onPress={() => console.log(currentMessage) }
         />
         </View>
       </KeyboardAvoidingView>
