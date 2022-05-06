@@ -62,8 +62,8 @@ function MapScreen(props) {
    }
 
   var markerPOI = props.list.map((POI, i)=>{
-    return <Marker key={i} pinColor="#764AF1" coordinate={{latitude: POI.latitude, longitude: POI.longitude}} title={titlePOI}
-    description={descPOI} draggable/>
+    return <Marker key={i} pinColor="#764AF1" coordinate={{latitude: POI.latitude, longitude: POI.longitude}} title={POI.title}
+    description={POI.description}/>
   });
     
   return (    
