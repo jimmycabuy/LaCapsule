@@ -6,6 +6,7 @@ import * as Permissions from 'expo-permissions';
 import { Button, Input, Overlay } from 'react-native-elements';
 import { View, Image } from 'react-native';
 import { connect } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function MapScreen(props) {
   const [position, setPosition] = useState('');
@@ -23,15 +24,40 @@ function MapScreen(props) {
       var { status } = await Permissions.askAsync(Permissions.LOCATION);
       if (status === 'granted') {
         Location.watchPositionAsync({distanceInterval: 1}, (location) => { setPosition(location.coords); });
-      }
+      }        
     }
     askPermissions();
+
+    AsyncStorage.getItem("poiStorage",
+      function(error, poiFromStorage) {
+        if(poiFromStorage){
+          var listPOI = JSON.parse(poiFromStorage);
+          console.log(listPOI);
+          listPOI.forEach(poi => {
+            props.submitPOI(poi)
+          })
+        }
+      })
    }, []);
 
-   var selectPOI = (e) => {
+   async function selectPOI (e) {
     if(addPOI){
       setAddPOI(false);
-      props.submitPOI({latitude: e.nativeEvent.coordinate.latitude, longitude:e.nativeEvent.coordinate.longitude, title: titlePOI, description: descPOI})
+      const lat = e.nativeEvent.coordinate.latitude;
+      const long = e.nativeEvent.coordinate.longitude;
+      props.submitPOI({latitude: lat, longitude: long, title: titlePOI, description: descPOI})
+      let listPOI = [];
+      await AsyncStorage.getItem("poiStorage",
+      function(error, poiFromStorage){
+        if(poiFromStorage){
+          listPOI = JSON.parse(poiFromStorage);
+        }
+      })
+      await AsyncStorage.removeItem("poiStorage"); 
+      var newPOI = {title: titlePOI , description: descPOI, longitude: long , latitude: lat }
+
+      listPOI.push(newPOI)
+      await AsyncStorage.setItem("poiStorage", JSON.stringify(listPOI))
     }
    }
 
@@ -99,7 +125,7 @@ function MapScreen(props) {
         width: 315,
         borderRadius: 20,
       }}
-      onPress={() => {toggleOverlay()}}
+      onPress={() => {toggleOverlay() }  }
       />
       </Overlay>
   </View>

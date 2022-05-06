@@ -12,6 +12,7 @@ LogBox.ignoreAllLogs();
 const Stack = createStackNavigator();
 const store = createStore(combineReducers({pseudo, list}))
 
+
 export default function App() {
   return (
     <Provider store={store}>

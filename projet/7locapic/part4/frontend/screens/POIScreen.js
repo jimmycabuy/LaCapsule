@@ -2,8 +2,23 @@ import { View, ScrollView, Text } from 'react-native'
 import React from 'react'
 import { Button, ListItem } from 'react-native-elements'
 import { connect } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export function POIScreen(props) {
+
+    async function removePOI(pin) {
+    props.deletePOI(pin)
+      let listPOI = [];
+      await AsyncStorage.getItem("poiStorage",
+      function(error, poiFromStorage){
+        if(poiFromStorage){
+          listPOI = JSON.parse(poiFromStorage);
+        }
+      })
+      await AsyncStorage.removeItem("poiStorage");
+      listPOI = listPOI.filter(poi => poi.title !== pin.title && poi.description !== pin.description)
+      await AsyncStorage.setItem("poiStorage", JSON.stringify(listPOI))
+    }
 
     if(props.list.length === 0){
         return(
@@ -37,7 +52,7 @@ export function POIScreen(props) {
                                 height: 40,
                                 width: 50,
                             }}
-                            onPress={() => props.deletePOI(pin)}
+                            onPress={() => removePOI(pin)}
                             />
                     </ListItem>
                   ))}

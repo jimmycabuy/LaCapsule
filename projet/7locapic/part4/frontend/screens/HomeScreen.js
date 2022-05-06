@@ -41,7 +41,7 @@ function HomeScreen(props) {
       }
     
   return (
-    <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:"#EFDAD7" }}>
+    <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:"#EFDAD7"  }}>
       {inputPseudo}
       <Button
         title="Go To Map"

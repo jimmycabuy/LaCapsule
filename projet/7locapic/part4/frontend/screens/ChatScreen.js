@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux';
 
-var socket = socketIOClient("http://10.12.56.240:3000");
+var socket = socketIOClient("http://172.20.10.5:3000");
 
 function ChatScreen(props) {
 
