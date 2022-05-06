@@ -104,6 +104,7 @@ function MapScreen(props) {
         height: 225,
         alignItems: 'center',
         justifyContent: 'center',
+        shadowOpacity: 100,
       }}
       >
       <Input
@@ -122,7 +123,7 @@ function MapScreen(props) {
         borderColor: 'transparent',
         borderWidth: 0,
         height: 60,
-        width: 315,
+        width: 100,
         borderRadius: 20,
       }}
       onPress={() => {toggleOverlay() }  }
