@@ -4,33 +4,19 @@ import socketIOClient from "socket.io-client";
 import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux';
 
-var socket = socketIOClient("http://172.20.10.5:3000");
+var socket = socketIOClient("http://10.12.56.240:3000");
 
 function ChatScreen(props) {
 
   const [currentMessage, setCurrentMessage] = useState('');
   const [listMessage, setListMessage] = useState([]);
   
-  
   useEffect(() => {
     socket.on('sendMessageToAll', (newMessageData) => {
       setListMessage([...listMessage, newMessageData]);
     });
   }, [listMessage]);
-  
-  // if(/a/){
-  //   var myRegex = /a/;
-  //   var myNewEmoji = "\u263A";
-  // }
-  // if (/:p/){
-  //   var myRegex = /:p/;
-  //   var myNewEmoji = "\uD83D\uDE1B";
-  // }
-  // if (/:\(/){
-  //   var myRegex = /:\(/;
-  //   var myNewEmoji = "\u2639";
-  // }
-  
+    
   var allMessage = listMessage.map((messageData) => {
     var msg = messageData.message.replace(/:\(/g, "\u2639");
     msg = msg.replace(/:\)/g, "\u263A");

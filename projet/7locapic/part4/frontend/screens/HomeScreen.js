@@ -1,13 +1,27 @@
-import { View } from 'react-native'
+import { View, Text } from 'react-native'
 import { Input, Button } from 'react-native-elements'
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { connect } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 function HomeScreen(props) {
   const [pseudo, setPseudo] = useState('');
-  return (
-    <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:"#EFDAD7" }}>
-      <Input
+  const [pseudoIsStorage, setPseudoIsStorage] = useState(false);
+
+  useEffect(() => {
+    AsyncStorage.getItem("pseudo",
+    function(error, pseudoStorage) {
+        if(pseudoStorage){
+          console.log(pseudoStorage)
+          setPseudo(pseudoStorage)
+          setPseudoIsStorage(true) 
+        }
+    });
+  },[]);
+
+  var inputPseudo;
+  if(!pseudoIsStorage){
+    inputPseudo = <Input
       inputStyle={{
         textAlign:'center',
         paddingRight: 20,
@@ -19,6 +33,16 @@ function HomeScreen(props) {
       }}
       onChangeText={(value) => setPseudo(value)}
       />
+      }
+      else {
+        inputPseudo = <Text style={{fontSize: 35, color:'#fff', textAlign:'center', marginBottom:20}}>
+            Welcome back {pseudo} !
+        </Text>
+      }
+    
+  return (
+    <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:"#EFDAD7" }}>
+      {inputPseudo}
       <Button
         title="Go To Map"
         icon={{
@@ -41,7 +65,7 @@ function HomeScreen(props) {
           marginHorizontal: 50,
           marginVertical: 10,
         }}
-        onPress={() => {props.submitName(pseudo) ; props.navigation.navigate('PageTab')}}
+        onPress={() => {props.submitName(pseudo) ; props.navigation.navigate('PageTab') ; AsyncStorage.setItem("pseudo", pseudo)}}
         />
     </View>
   )
