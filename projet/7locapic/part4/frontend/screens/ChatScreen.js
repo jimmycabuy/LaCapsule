@@ -4,7 +4,7 @@ import socketIOClient from "socket.io-client";
 import React, {useEffect, useState} from 'react'
 import { connect } from 'react-redux';
 
-var socket = socketIOClient("http://172.20.10.5:3000");
+var socket = socketIOClient("http://192.168.1.6:3000");
 
 function ChatScreen(props) {
 
@@ -47,7 +47,7 @@ function ChatScreen(props) {
       value={currentMessage}
       />
       <Button
-        title="Envoyer"
+        title="Send"
         icon={{
           name: 'mail-outline',
           type: 'ionicon',
