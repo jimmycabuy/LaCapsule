@@ -19,8 +19,13 @@ function ChatScreen(props) {
     
   var allMessage = listMessage.map((messageData) => {
     var msg = messageData.message.replace(/:\(/g, "\u2639");
-    msg = msg.replace(/:\)/g, "\u263A");
-    msg = msg.replace(/:p/g, "\uD83D\uDE1B");
+    msg = msg.replace(/:\)/g, "\uD83D\uDE0A");
+    msg = msg.replace(/:D/gi, "\uD83D\uDE04");
+    msg = msg.replace(/xD/gi, "\uD83D\uDE06");
+    msg = msg.replace(/;\)/g, "\uD83D\uDE09");
+    msg = msg.replace(/:p/gi, "\uD83D\uDE1B");
+    msg = msg.replace(/:o/gi, "\uD83D\uDE31");
+    msg = msg.replace(/<3/g, "\u2764\uFE0F");
     var msg = msg.replace(/[a-z]*fuck[a-z]*/gi, "****");
 
     return (
