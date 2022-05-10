@@ -29,8 +29,8 @@ export default function PageTab() {
       }
      }}
      >
-       <Tab.Screen name="Snap" component={SnapScreen} />
        <Tab.Screen name="Gallery" component={GalleryScreen} />
+       <Tab.Screen name="Snap" component={SnapScreen} />
      </Tab.Navigator>
   )
 }
