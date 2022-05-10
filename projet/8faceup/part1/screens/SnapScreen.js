@@ -42,10 +42,11 @@ useEffect(() => {
        title="Take a picture"
        titleStyle={{ fontWeight: '500' }}
        buttonStyle={{
-       backgroundColor: '#E3BEC6',
+       backgroundColor: '#e92754',
        borderColor: 'transparent',
        borderWidth: 0,
        height: 60,
+       color:"#000"
        }}
        onPress={async () => {
         setIsVisible(true)
