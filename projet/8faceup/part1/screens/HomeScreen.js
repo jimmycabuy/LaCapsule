@@ -6,7 +6,7 @@ export default function HomeScreen(props) {
     return (
         <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:"#FFFC00" }}>
             <Image source={require('../assets/snapchat.png')} style={{ width:100, height:100, marginBottom:20, marginTop:0}}/>
-            <Text style={{fontSize: 30, textAlign:'center', paddingBottom: 30, color:"fff" }}>Welcome on Snapchat</Text>
+            <Text style={{fontSize: 30, textAlign:'center', paddingBottom: 30, color:"#000" }}>Welcome on Snapchat</Text>
           <Input
           inputContainerStyle={{borderBottomWidth:0}}
           placeholderTextColor = '#e92754'
@@ -37,7 +37,7 @@ export default function HomeScreen(props) {
             // }}
             // iconRight
             // iconContainerStyle={{ marginLeft: 10 }}
-            titleStyle={{ fontWeight: '600' }}
+            // titleStyle={{ fontWeight: '600' }}
             buttonStyle={{
               backgroundColor: '#9b55a0',
               borderColor: 'transparent',
