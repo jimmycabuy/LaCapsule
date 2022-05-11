@@ -4,8 +4,9 @@ import { Camera } from 'expo-camera';
 import { Button, Overlay, Input } from 'react-native-elements'
 import IonIcon from 'react-native-vector-icons/Ionicons';
 import { useIsFocused } from '@react-navigation/native';
+import { connect } from 'react-redux';
 
-export default function SnapScreen() {
+function SnapScreen(props) {
 
 const [hasPermission, setHasPermission] = useState(false);
 const [type, setType] = useState(Camera.Constants.Type.back);
@@ -52,7 +53,7 @@ useEffect(() => {
         setIsVisible(true)
            if(cameraRef){
                let photo = await cameraRef.takePictureAsync(
-                   { quality: 0.7, base64: true, exif: true }
+                   { quality: 0.2, base64: true, exif: true }
                )
                console.log("Votre photo a bien été prise, elle possède une largeur de " + photo.width + "px");
                setIsVisible(false);
@@ -70,6 +71,7 @@ useEffect(() => {
                 })
                 var response = await rawResponse.json()
                 console.log(response);
+                props.sendImageURL(response)
            }
        }}
        />
@@ -96,3 +98,13 @@ useEffect(() => {
 </View>
   )
 }
+
+function mapDispatchToProps(dispatch){
+    return {
+      sendImageURL: function(photo){
+        dispatch ({type: "addURL", photo: photo})
+      }
+    }
+  }
+  export default connect(null, mapDispatchToProps)
+  (SnapScreen);
