@@ -56,6 +56,20 @@ useEffect(() => {
                )
                console.log("Votre photo a bien été prise, elle possède une largeur de " + photo.width + "px");
                setIsVisible(false);
+               
+               var data = new FormData();
+               
+               data.append('avatar', {
+                   uri: photo.uri,
+                   type: 'image/jpeg',
+                   name: 'user_avatar.jpg',
+                });
+                var rawResponse = await fetch('http://172.20.10.5:3000/upload', {
+                    method: 'POST',
+                    body: data
+                })
+                var response = await rawResponse.json()
+                console.log(response);
            }
        }}
        />
