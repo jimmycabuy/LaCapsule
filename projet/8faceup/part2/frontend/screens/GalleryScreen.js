@@ -5,8 +5,8 @@ import { connect } from 'react-redux';
 
 function GalleryScreen(props) {
     // console.log(props.photo);
-    var urlPhoto = props.photo.map((image, i)=>{
-        console.log(image.url)
+    var photoList = props.photo.map((image, i)=>{
+        // console.log(image.url)
         
         return  <Card>
                     <Card.Image source={{uri: image.url}} style={{ width:'100%', height:250, marginBottom:20, marginTop:0}}/>
@@ -21,7 +21,7 @@ function GalleryScreen(props) {
     <View style={{flex:1, paddingTop:50, backgroundColor:"#FFF"}}>
         <ScrollView>
             <Text style={{fontSize: 30, textAlign:'center', fontWeight: '600', paddingTop:10}}>Jimmy's Gallery</Text>
-            {urlPhoto}
+            {photoList}
         </ScrollView>
     </View>
   )
