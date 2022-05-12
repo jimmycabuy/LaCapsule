@@ -8,7 +8,7 @@ function GalleryScreen(props) {
     var photoList = props.photo.map((image, i)=>{
         // console.log(image.url)
         
-        return  <Card>
+        return  <Card key={i}>
                     <Card.Image source={{uri: image.url}} style={{ width:'100%', height:250, marginBottom:20, marginTop:0}}/>
                     <Badge status="success" value={<Text style={{color:"white", width:150, textAlign:'center'}}>Homme</Text>}/>
                     <Badge status="success" value={<Text style={{color:"white", width:150, textAlign:'center'}}>70 ans</Text>}/>

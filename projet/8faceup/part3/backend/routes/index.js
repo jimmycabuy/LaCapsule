@@ -17,6 +17,7 @@ router.get('/', function(req, res, next) {
 var uniqid = require('uniqid');
 var fs = require('fs');
 
+/* UPLOAD new picture on Cloudinary. */
 router.post('/upload', async function(req, res, next) {
   var pictureName = './tmp/'+uniqid()+'.jpg';
   var resultCopy = await req.files.avatar.mv(pictureName)  
