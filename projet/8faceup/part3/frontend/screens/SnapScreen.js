@@ -17,7 +17,6 @@ var cameraRef = useRef(null);
 
 const isFocused = useIsFocused();
 
-
 useEffect(() => {  
     (async () => {
         const { status } = await Camera.requestCameraPermissionsAsync();
@@ -53,7 +52,7 @@ useEffect(() => {
         setIsVisible(true)
            if(cameraRef){
                let photo = await cameraRef.takePictureAsync(
-                   { quality: 0.2, base64: true, exif: true }
+                   { quality: 0.1, base64: true, exif: true }
                )
                console.log("Votre photo a bien été prise, elle possède une largeur de " + photo.width + "px");
                setIsVisible(false);
