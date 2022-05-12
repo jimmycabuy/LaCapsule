@@ -4,17 +4,13 @@ import React from 'react'
 import { connect } from 'react-redux';
 
 function GalleryScreen(props) {
-    // console.log(props.photo);
+
     var photoList = props.photo.map((image, i)=>{
-        // console.log(image.url)
         
         return  <Card key={i}>
-                    <Card.Image source={{uri: image.url}} style={{ width:'100%', height:250, marginBottom:20, marginTop:0}}/>
-                    <Badge status="success" value={<Text style={{color:"white", width:150, textAlign:'center'}}>Homme</Text>}/>
-                    <Badge status="success" value={<Text style={{color:"white", width:150, textAlign:'center'}}>70 ans</Text>}/>
-                    <Badge status="success" value={<Text style={{color:"white", width:150, textAlign:'center'}}>Barbe</Text>}/>
-                    <Badge status="success" value={<Text style={{color:"white", width:150, textAlign:'center'}}>Heureux</Text>}/>
-                    <Badge status="success" value={<Text style={{color:"white", width:150, textAlign:'center'}}>Cheveux Gris</Text>}/>
+                    <Card.Image source={{uri: image.resultCloudinary.url}} style={{ width:'100%', height:250, marginBottom:20, marginTop:0}}/>
+                    <Badge status={(image.gender === "No face detected") ? "error" : "success"} value={<Text style={{color:"white", width:150, textAlign:'center'}}>{image.gender}</Text>}/>
+                    <Badge status={(image.age === "No age detected") ? "error" : "success"} value={<Text style={{color:"white", width:150, textAlign:'center'}}>{image.age}</Text>}/>
                 </Card>
       });
   return (

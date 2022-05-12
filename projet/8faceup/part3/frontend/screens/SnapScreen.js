@@ -70,7 +70,7 @@ useEffect(() => {
                     body: data
                 })
                 var response = await rawResponse.json()
-                console.log(response);
+                // console.log(response);
                 props.sendImageURL(response)
            }
        }}
