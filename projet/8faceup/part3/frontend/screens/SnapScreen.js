@@ -101,7 +101,7 @@ useEffect(() => {
 function mapDispatchToProps(dispatch){
     return {
       sendImageURL: function(photo){
-        dispatch ({type: "addURL", photo: photo})
+        dispatch ({type: "addPhoto", photo: photo})
       }
     }
   }

@@ -5,11 +5,12 @@ import PageTab from './screens/PageTab';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers } from 'redux';
 import photo from './reducers/photo'
+import pseudo from './reducers/pseudo'
 import { LogBox } from 'react-native';
 LogBox.ignoreAllLogs();
 
 const Stack = createStackNavigator();
-const store = createStore(combineReducers({photo}))
+const store = createStore(combineReducers({photo, pseudo}))
 
 export default function App() {
   return (
