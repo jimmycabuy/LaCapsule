@@ -41,14 +41,15 @@ router.post('/upload', async function(req, res, next) {
       var gender = "No face detected";
       var age = "No age detected"
      } else {
-       if(gender = resultDetection.detectedFaces[0].gender){
+       if(resultDetection.detectedFaces[0].gender === "male"){
          gender = "Homme"
-        } else if(age = resultDetection.detectedFaces[0].gender){
+        } else if(resultDetection.detectedFaces[0].gender === "female"){
           gender = "Femme"
        }
        age = resultDetection.detectedFaces[0].age + " ans";
      }
-     console.log(resultDetection.result)
+     console.log(resultDetection);
+     console.log(resultDetection.result);
      console.log(age);
      console.log(gender);
 
