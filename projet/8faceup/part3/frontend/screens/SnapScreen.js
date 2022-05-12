@@ -64,7 +64,7 @@ useEffect(() => {
                    type: 'image/jpeg',
                    name: 'user_avatar.jpg',
                 });
-                var rawResponse = await fetch('http://172.20.10.5:3000/upload', {
+                var rawResponse = await fetch('https://faceappjimmy.herokuapp.com/upload', {
                     method: 'POST',
                     body: data
                 })

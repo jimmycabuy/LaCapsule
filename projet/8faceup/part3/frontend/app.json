@@ -1,10 +1,10 @@
 {
   "expo": {
-    "name": "part1",
-    "slug": "part1",
+    "name": "faceapp",
+    "slug": "faceapp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/favicon.png",
     "userInterfaceStyle": "light",
     "splash": {
       "image": "./assets/splash.png",
