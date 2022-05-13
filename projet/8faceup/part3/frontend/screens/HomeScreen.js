@@ -5,20 +5,20 @@ import { connect } from 'react-redux';
  
 function HomeScreen(props) {
     return (
-        <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:"#FFFC00" }}>
-            <Image source={require('../assets/snapchat.png')} style={{ width:100, height:100, marginBottom:20, marginTop:0}}/>
-            <Text style={{fontSize: 30, textAlign:'center', paddingBottom: 30, color:"#000" }}>Welcome on Snapchat</Text>
+        <View style={{ flex:1, justifyContent:'center', alignItems:'center', backgroundColor:"#ff0a29" }}>
+            <Image source={require('../assets/icon.png')} style={{ width:100, height:100, marginBottom:20, marginTop:0}}/>
+            <Text style={{fontSize: 30, textAlign:'center', paddingBottom: 30, color:"#fff", fontFamily:'Avenir-Medium' }}>Welcome on Faceapp</Text>
           <Input
           inputContainerStyle={{borderBottomWidth:0}}
-          placeholderTextColor = '#e92754'
+          placeholderTextColor = '#fff'
           inputStyle={{
             textAlign:'center',
             borderRadius: 30,
-            color:'#e92754',
+            color:'#fff',
             borderWidth:2,
-            borderColor: "#e92754"
+            borderColor: "#fff"
           }}
-          placeholder="username"
+          placeholder="put username here"
           containerStyle={{
             width: 225,
             marginBottom:10,
@@ -30,13 +30,15 @@ function HomeScreen(props) {
           <Button
             title="Gallery"
             buttonStyle={{
-              backgroundColor: '#9b55a0',
-              borderColor: 'transparent',
-              borderWidth: 0,
+              backgroundColor: '#fff',
               borderRadius: 30,
+              color: "black",
             }}
             containerStyle={{
               width: 200,
+            }}
+            titleStyle={{
+              color: '#ff0a29',
             }}
             onPress={() => {props.navigation.navigate('PageTab')}}
             />

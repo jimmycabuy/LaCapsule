@@ -42,7 +42,7 @@ useEffect(() => {
        title="Take a picture"
        titleStyle={{ fontWeight: '500' }}
        buttonStyle={{
-       backgroundColor: '#e92754',
+       backgroundColor: '#ff0a29',
        borderColor: 'transparent',
        borderWidth: 0,
        height: 60,

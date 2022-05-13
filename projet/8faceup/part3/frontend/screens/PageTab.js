@@ -22,7 +22,7 @@ export default function PageTab() {
      })}
      
      tabBarOptions={{
-        activeTintColor: '#e92754',
+        activeTintColor: '#ff0a29',
         inactiveTintColor: '#bbb',
         style:{
           backgroundColor:"#fff"

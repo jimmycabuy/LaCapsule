@@ -57,6 +57,7 @@ router.post('/upload', async function(req, res, next) {
   } else {
     res.json({error: resultCopy})
   }
+
   fs.unlinkSync(pictureName);
 })
 

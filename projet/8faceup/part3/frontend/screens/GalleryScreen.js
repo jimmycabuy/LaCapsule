@@ -23,7 +23,7 @@ function GalleryScreen(props) {
   return (
     <View style={{flex:1, paddingTop:50, backgroundColor:"#FFF"}}>
         <ScrollView>
-            <Text style={{fontSize: 30, textAlign:'center', fontWeight: '600', paddingTop:10}}>Jimmy's Gallery</Text>
+            <Text style={{fontSize: 30, textAlign:'center', fontWeight: '600', paddingTop:10}}>{props.pseudo}'s Gallery</Text>
             {photoList}
         </ScrollView>
     </View>
